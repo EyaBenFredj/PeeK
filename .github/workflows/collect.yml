@@ -1,0 +1,20 @@
+# Save as .github/workflows/collect.yml in a free GitHub repo (with collector.py at the root)
+name: PeeK daily collect
+on:
+  schedule: [{ cron: "17 4 * * *" }]
+  workflow_dispatch:
+permissions: { contents: write }
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pytrends requests
+      - run: python collector.py
+        env: { META_TOKEN: "${{ secrets.META_TOKEN }}" }
+      - run: |
+          git config user.name tunspy-bot && git config user.email bot@users.noreply.github.com
+          git add products.json && git commit -m "data: $(date -u +%F)" || echo "no changes"
+          git push
