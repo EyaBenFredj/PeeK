@@ -8,7 +8,9 @@ from pytrends.request import TrendReq
 
 UA = {"User-Agent": "PeeK-collector/1.0"}
 SUBS = ["shutupandtakemymoney", "BuyItForLife", "gadgets", "INEEEEDIT", "DidntKnowIWantedThat"]
-SEED = [l.strip() for l in open("seeds.txt")] if os.path.exists("seeds.txt") else []
+DEFAULT_SEEDS = ["neck fan", "heated lunch box", "label printer", "spin scrubber", "garment steamer",
+                 "kids drawing projector", "ice roller", "bakhoor burner", "blanket hoodie", "oil sprayer bottle"]
+SEED = [l.strip() for l in open("seeds.txt", encoding="utf-8") if l.strip()] if os.path.exists("seeds.txt") else DEFAULT_SEEDS
 MAX_KEYWORDS = 25  # 12 markets x 25 keywords stays well inside GitHub's free 6h job limit
 STOP = set("the a an this that my for with of and to in on is it i you new best".split())
 
@@ -75,6 +77,9 @@ def main():
              "ads": meta_ads(kw, "US") or 0, "tnSellers": meta_ads(kw, "TN") or 0}
         prods.append(p)
         print("ok", kw)
+    print(f"keywords tried: {len(kws)} | with trend data: {len(prods)}")
+    if not prods:
+        raise SystemExit("No trend data collected (Google Trends rate-limited or blocked). Keeping the previous products.json; re-run later.")
     json.dump(prods, open("products.json", "w"), ensure_ascii=False, indent=1)
     print(len(prods), "products written")
 
