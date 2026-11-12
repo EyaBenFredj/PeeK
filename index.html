@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PeeK — Winning Product Intelligence for Tunisia</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--r:14px;--acc:#ff3d6e;--acc2:#7b61ff;--ok:#1fd17a;--warn:#ffb020;--bad:#ff4d4f;--go:#1fd17a;--test:#4f9dff;--watch:#ffb020;--avoid:#ff4d4f}
+[data-theme=dark]{--bg:#07090f;--bg2:#0c1019;--panel:#111622;--panel2:#171d2c;--line:#222a3d;--line2:#2d3750;--txt:#eef1f8;--mut:#8792ab;--mut2:#5b6680;--glow:rgba(123,97,255,.14)}
+[data-theme=light]{--bg:#f4f6fb;--bg2:#ffffff;--panel:#ffffff;--panel2:#f1f3f9;--line:#e3e7f0;--line2:#d3d9e6;--txt:#121826;--mut:#5d6880;--mut2:#8a94aa;--glow:rgba(123,97,255,.08)}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.45}
+body:before{content:"";position:fixed;inset:-20% 40% auto -10%;height:60vh;background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none;z-index:0}
+a{color:var(--acc2);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh;position:relative;z-index:1}
+aside{background:var(--bg2);border-right:1px solid var(--line);padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
+.logo{display:flex;align-items:center;gap:10px;padding:2px 10px 6px}.logo .mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;box-shadow:0 6px 22px -6px var(--acc)}
+.logo b{font-size:22px;font-weight:800;letter-spacing:-.02em}.logo b span{color:var(--acc)}
+.tag{font-size:11.5px;color:var(--mut);padding:0 10px 14px}
+.nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;margin-bottom:1px;text-decoration:none}
+.nav a svg{width:18px;height:18px;flex:none}.nav a:hover{background:var(--panel2);color:var(--txt)}
+.nav a.on{background:linear-gradient(90deg,rgba(255,61,110,.14),transparent);color:var(--txt);box-shadow:inset 3px 0 0 var(--acc)}
+.nav .sec{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut2);margin:16px 10px 6px;font-weight:700}
+.nb{margin-left:auto;background:var(--acc);color:#fff;border-radius:20px;font-size:10.5px;padding:1px 7px;font-weight:700}.nb.g{background:var(--go)}
+.foot{margin-top:auto;padding:12px 10px 0;font-size:11.5px;color:var(--mut2)}
+main{padding:20px 30px 70px;min-width:0}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.top h1{font-size:24px;margin:0;font-weight:800;letter-spacing:-.02em}.top .sub{color:var(--mut);font-size:13px}
+.sp{flex:1}.kbd{font-family:"JetBrains Mono";font-size:11px;border:1px solid var(--line2);border-radius:5px;padding:1px 5px;color:var(--mut)}
+.srch{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 12px;cursor:pointer;color:var(--mut);min-width:240px}
+.tn{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-weight:600}
+.demo{background:linear-gradient(90deg,rgba(255,176,32,.12),rgba(255,176,32,.03));border:1px solid rgba(255,176,32,.35);color:var(--warn);padding:9px 14px;border-radius:12px;font-size:12.5px;margin-bottom:18px}
+.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1200px){.g5{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:780px){.app{grid-template-columns:1fr}aside{position:static;height:auto}.g4,.g3,.g2,.g5{grid-template-columns:1fr}main{padding:16px}.srch{min-width:0}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.card h3{margin:0 0 14px;font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:8px}.card h3 .sp{flex:1}
+.kpi .l{color:var(--mut);font-size:12.5px;font-weight:600}.kpi .v{font-size:30px;font-weight:800;margin-top:2px;letter-spacing:-.02em}.kpi .d{font-size:12px;color:var(--mut);margin-top:2px}
+.up{color:var(--ok)}.down{color:var(--bad)}.mut{color:var(--mut)}.mono{font-family:"JetBrains Mono",monospace}
+.btn{background:var(--panel2);border:1px solid var(--line);padding:8px 14px;border-radius:10px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:6px;color:var(--txt);text-decoration:none!important}
+.btn:hover{border-color:var(--line2)}.btn.pri{background:linear-gradient(135deg,var(--acc),#e8306a);border:0;color:#fff;box-shadow:0 6px 18px -8px var(--acc)}.btn.sm{padding:5px 10px;font-size:12px}.btn.on{border-color:var(--acc2);color:var(--acc2)}
+input[type=text],input[type=number],select,textarea{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:8px 11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--acc2);box-shadow:0 0 0 3px var(--glow)}
+input[type=range]{accent-color:var(--acc)}input[type=checkbox]{accent-color:var(--acc)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+table{width:100%;border-collapse:collapse}th{text-align:left;color:var(--mut);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:10px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}tr.row:hover td{background:var(--panel2)}tr.row{cursor:pointer}
+.pimg{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:23px;background:linear-gradient(135deg,var(--panel2),var(--bg2));border:1px solid var(--line);flex:none}
+.pn{display:flex;gap:11px;align-items:center;min-width:0}.pn b{display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pn small{color:var(--mut);font-size:12px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:700;white-space:nowrap;border:1px solid transparent}
+.st-Emerging{background:rgba(31,209,122,.12);color:var(--ok)}.st-Rising{background:rgba(79,157,255,.12);color:#4f9dff}.st-Peak{background:rgba(255,176,32,.12);color:var(--warn)}.st-Declining{background:rgba(255,77,79,.12);color:var(--bad)}
+.v-GO{background:rgba(31,209,122,.14);color:var(--go);border-color:rgba(31,209,122,.4)}.v-TEST{background:rgba(79,157,255,.14);color:var(--test);border-color:rgba(79,157,255,.4)}.v-WATCH{background:rgba(255,176,32,.14);color:var(--watch);border-color:rgba(255,176,32,.4)}.v-AVOID{background:rgba(255,77,79,.14);color:var(--avoid);border-color:rgba(255,77,79,.4)}
+.bar{height:7px;background:var(--panel2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;border-radius:9px}
+.modal{position:fixed;inset:0;background:rgba(3,5,10,.7);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:28px 16px;overflow:auto;z-index:50}
+.modal.on{display:flex}.mbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;width:min(1120px,100%);padding:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin:16px 0;overflow:auto}.tabs button{background:none;border:0;padding:10px 13px;color:var(--mut);cursor:pointer;border-bottom:2px solid transparent;font-weight:600;white-space:nowrap}
+.tabs button.on{color:var(--txt);border-color:var(--acc)}
+.r2{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}.r2:last-child{border:0}
+.legend{display:flex;gap:6px;flex-wrap:wrap}.mchip{cursor:pointer;border:1px solid var(--line);background:var(--bg2);border-radius:20px;padding:3px 9px;font-size:12px;font-weight:600;color:var(--mut)}.mchip.on{color:var(--txt);border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--panel2);border:1px solid var(--line2);padding:11px 16px;border-radius:12px;opacity:0;transform:translateY(8px);transition:.25s;z-index:99;font-weight:600}.toast.on{opacity:1;transform:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.pc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;cursor:pointer;transition:.18s;position:relative}.pc:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(0,0,0,.6)}
+.hook{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:7px;font-size:13px}
+pre.out{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px;max-height:460px;overflow:auto;font-family:inherit;margin:0}
+label.f{display:block;font-size:12px;color:var(--mut);margin-bottom:5px;font-weight:600}.fg{margin-bottom:12px}.fg input,.fg select{width:100%}
+.empty{text-align:center;color:var(--mut);padding:44px}
+.star{cursor:pointer;font-size:18px;color:var(--mut2)}.star.on{color:#ffc53d}
+.heat td{padding:0;border:1px solid var(--bg)}.heat .c{height:34px;display:grid;place-items:center;font-size:11.5px;font-weight:700;font-family:"JetBrains Mono"}
+.crit{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.crit:last-child{border:0}
+.dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}
+.d-p{background:rgba(31,209,122,.15);color:var(--ok)}.d-w{background:rgba(255,176,32,.15);color:var(--warn)}.d-f{background:rgba(255,77,79,.15);color:var(--bad)}
+.verdict{border-radius:16px;padding:18px;border:1px solid;display:flex;gap:16px;align-items:center}
+.verdict .big{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.kan{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:12px;overflow:auto}.col{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px;min-height:300px}
+.col h4{margin:4px 4px 10px;font-size:13px;display:flex;justify-content:space-between}.kc{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:10px;margin-bottom:8px;cursor:grab}
+.col.over{border-color:var(--acc2)}
+.pal{position:fixed;inset:0;background:rgba(3,5,10,.55);display:none;justify-content:center;padding-top:12vh;z-index:80}.pal.on{display:flex}
+.pal .box{width:min(620px,92%);background:var(--panel);border:1px solid var(--line2);border-radius:16px;overflow:hidden;height:fit-content}
+.pal input{width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:16px;font-size:16px;background:transparent}
+.pal .it{padding:10px 16px;display:flex;gap:10px;align-items:center;cursor:pointer}.pal .it:hover,.pal .it.sel{background:var(--panel2)}
+.msg{padding:10px 14px;border-radius:12px;margin-bottom:8px;max-width:85%;white-space:pre-wrap}.msg.u{background:linear-gradient(135deg,var(--acc),#e8306a);color:#fff;margin-left:auto}.msg.a{background:var(--panel2)}
+.seg{display:inline-flex;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:3px}.seg button{border:0;background:none;padding:5px 11px;border-radius:7px;cursor:pointer;color:var(--mut);font-weight:600;font-size:12.5px}.seg button.on{background:var(--panel2);color:var(--txt)}
+.cal{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}.cal div{background:var(--panel2);border-radius:8px;padding:8px 2px;text-align:center;font-size:11.5px;color:var(--mut);font-weight:600}.cal .now{outline:2px solid var(--acc);color:var(--txt)}.cal .hot{background:rgba(255,61,110,.15);color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="logo"><div class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></div><b>Pee<span>K</span></b></div>
+  <div class="tag">See global winners before Tunisia does</div>
+  <nav class="nav" id="nav"></nav>
+  <div class="foot"><span class="btn sm" id="theme">◐ Theme</span><div style="margin-top:8px">Selling to 🇹🇳 Tunisia · 12 source markets</div></div>
+</aside>
+<main id="main"></main>
+</div>
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<div class="pal" id="pal"><div class="box"><input id="palq" placeholder="Jump to a product or page…"><div id="pall" style="max-height:50vh;overflow:auto"></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+// ================= Config =================
+const ICON={dash:'M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5',judge:'M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0zM8 21h8',heat:'M3 3h5v5H3zM10 3h5v5h-5zM17 3h4v5h-4zM3 10h5v5H3zM10 10h5v5h-5zM17 10h4v5h-4zM3 17h5v4H3zM10 17h5v4h-5zM17 17h4v4h-4z',wave:'M2 12c3-6 5-6 8 0s5 6 8 0 3-3 4-3',target:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',ads:'M4 5h16v14H4zM10 9l5 3-5 3z',ai:'M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z',calc:'M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2',cal:'M4 5h16v16H4zM4 10h16M8 3v4M16 3v4',kan:'M4 4h4v16H4zM10 4h4v10h-4zM16 4h4v7h-4z',cmp:'M7 4v16M17 4v16M3 8h8M13 14h8',bell:'M6 16v-5a6 6 0 1 1 12 0v5l2 2H4zM10 21h4',db:'M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0zM4 6c0 2 16 2 16 0M4 12c0 2 16 2 16 0',cog:'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2'};
+const ic=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="${ICON[k]}"/></svg>`;
+const NAV=[['Intelligence'],['dashboard','Dashboard','dash'],['explorer','Product Explorer','search'],['verdicts','Verdict Board','judge'],['heatmap','Global Heatmap','heat'],['waves','Wave Tracker','wave'],['map','Opportunity Map','target'],['ads','Ad Intelligence','ads'],['studio','AI Studio','ai'],
+ ['Tunisia ops'],['profit','Profit Lab (TND)','calc'],['seasons','Season Planner','cal'],['pipeline','Pipeline','kan'],['compare','Compare','cmp'],['alerts','Alerts','bell'],['System'],['data','Data Sources','db'],['config','Criteria & Costs','cog']];
+const MK=[['US','USA','🇺🇸','#4f9dff','anglo','amazon.com'],['UK','UK','🇬🇧','#38bdf8','anglo','amazon.co.uk'],['DE','Germany','🇩🇪','#a78bfa','eu','amazon.de'],['FR','France','🇫🇷','#8b5cf6','eu','amazon.fr'],['ES','Spain','🇪🇸','#c084fc','eu','amazon.es'],['IT','Italy','🇮🇹','#e879f9','eu','amazon.it'],
+ ['CN','China','🇨🇳','#ff6a3d','asia',''],['JP','Japan','🇯🇵','#fb923c','asia','amazon.co.jp'],['KR','S. Korea','🇰🇷','#fbbf24','asia',''],['TR','Türkiye','🇹🇷','#2dd4bf','em','amazon.com.tr'],['AE','Gulf (UAE/KSA)','🇦🇪','#34d399','em','amazon.ae'],['BR','Brazil','🇧🇷','#a3e635','em','amazon.com.br']];
+const MC=Object.fromEntries(MK.map(m=>[m[0],m]));
+const LAG={asia:{asia:1,anglo:4,eu:5,em:8},anglo:{anglo:1,eu:2,asia:5,em:6},eu:{eu:1,anglo:2,asia:5,em:4},em:{em:1,eu:4,anglo:4,asia:6}};
+const DEF={usd:3.05,duty:20,vat:19,tax:1,deliv:8,retFee:5,ret:20,conf:75,cpa:7,
+ w:{vel:22,mar:24,sat:16,fit:12,log:10,wave:16},
+ c:{margin:25,marginW:12,profit:20,profitW:10,pMin:35,pMax:150,vel:60,breadth:3,tnMax:5,tnW:12,adDays:30,kg:1}};
+let S=load('pk_cfg',DEF);S.w={...DEF.w,...S.w};S.c={...DEF.c,...S.c};
+function load(k,d){try{const v=localStorage.getItem(k);return v?Object.assign(structuredClone(d),JSON.parse(v)):structuredClone(d)}catch(e){return structuredClone(d)}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+try{document.documentElement.dataset.theme=localStorage.getItem('pk_theme')||'dark'}catch(e){}
+
+// ================= Demo dataset =================
+// name,cat,icon,costUSD,shipUSD,kg,tndPrice,ads,adDays,stores,tnSellers,fragile,restricted,seasons(0=evergreen),origin,shape(r rise,f fad,e evergreen,d decline),t0,hooks
+const RAW=[
+["Bladeless Neck Fan","Summer","🌀",4.2,2.1,.25,59,412,48,180,6,0,0,[5,6,7,8],"CN","r",4,["Heat-wave hack for the metro","Hands-free cooling all day"]],
+["Heated Electric Lunch Box","Kitchen","🍱",8.5,4.8,1.1,99,236,61,95,2,0,0,[10,11,12,1,2],"KR","r",6,["Hot homemade lunch at the office","Stop spending on takeaway"]],
+["Mini Thermal Label Printer","Business","🏷️",11,3.2,.4,119,310,90,140,4,0,0,0,"CN","r",3,["Organize your kitchen in 10 minutes","Must-have for small online sellers"]],
+["Cordless Mini Vacuum","Home","🧹",9.8,4,.7,129,520,120,410,18,0,0,0,"CN","e",0,["Car + sofa in one tool"]],
+["LED Prayer Mat (Qibla compass)","Ramadan","🕌",12,5.5,.9,149,88,30,22,3,0,0,[1,2,3],"TR","r",8,["The Ramadan gift they'll remember","Glowing guide for kids"]],
+["Dates & Nuts Serving Organizer","Ramadan","🌙",6,3.5,.8,69,54,18,15,1,1,0,[1,2,3],"AE","r",9,["Elegant iftar table in seconds"]],
+["Smart Posture Corrector","Health","🧍",5.5,2,.2,79,640,180,520,22,0,0,0,"US","d",4,["Fix your back in 21 days"]],
+["MagSafe Car Phone Mount","Auto","🚗",3,1.4,.15,45,380,75,300,25,0,0,0,"US","e",0,["One-hand mounting"]],
+["Electric Spin Scrubber","Home","🧽",10.5,5,1,139,445,66,160,5,0,0,[1,2,3,4,9,10],"US","r",7,["Spotless bathroom with zero effort","Your back will thank you"]],
+["Kids Drawing Projector","Kids","🎨",7.2,3,.5,89,198,40,64,2,0,0,[9,10,11,12,1],"CN","r",5,["Your kid will draw like an artist"]],
+["Mini Camera Drone","Gadgets","🚁",18,6,.6,249,280,70,190,1,1,1,[6,7,8,12],"CN","f",6,["Cinematic shots for beginners"]],
+["Mini Massage Gun","Health","💆",12,3.5,.5,149,350,110,280,12,0,0,0,"US","d",3,["Recovery like a pro athlete"]],
+["Wearable Blanket Hoodie","Winter","🧥",9,6.5,1.3,119,290,45,130,9,0,0,[11,12,1,2],"US","r",8,["You'll never take it off"]],
+["USB-C Portable Blender","Kitchen","🥤",6.5,3,.6,79,510,150,480,30,1,0,[4,5,6,7,8],"US","d",2,["Smoothie anywhere"]],
+["Smart Reminder Water Bottle","Health","💧",5,2.6,.4,65,176,28,40,0,0,0,[4,5,6,7,8,9],"KR","r",7,["Drink 2L a day without thinking"]],
+["Ionic Straightener Brush","Beauty","💇",8,2.8,.5,109,620,160,390,28,0,0,0,"US","e",0,["Salon hair in 5 minutes"]],
+["Scalp Massager Shampoo Brush","Beauty","🫧",1.6,1,.08,29,230,52,110,7,0,0,0,"JP","r",5,["The anti-hair-fall routine"]],
+["Under-Bed Storage Organizers","Home","📦",4.5,4,.9,69,120,35,48,3,0,0,[8,9,10],"DE","r",7,["Double your closet space"]],
+["Car Seat Gap Filler (pair)","Auto","🧷",2.2,1.6,.3,39,160,40,70,4,0,0,0,"US","e",0,["Never lose your phone under the seat"]],
+["3D LED Moon Lamp","Gifts","🌕",6,4,.6,79,140,60,210,15,1,0,[11,12,2],"CN","d",2,["The gift that wows"]],
+["Backpack with USB Port","School","🎒",9.5,6,1,119,140,25,60,5,0,0,[8,9],"CN","f",6,["Back-to-school upgrade"]],
+["Milk Frother + Stand","Kitchen","☕",3.2,1.8,.25,45,260,70,240,14,0,0,0,"IT","e",0,["Café latte at home for 0.3 TND"]],
+["Steel Facial Ice Roller","Beauty","🧊",3.8,1.5,.2,55,300,44,85,3,0,0,[4,5,6,7,8],"KR","r",4,["De-puff in 60 seconds"]],
+["Pet Hair Remover Roller","Pets","🐾",3.5,2,.3,49,410,95,230,6,0,0,0,"US","r",6,["Your sofa looks brand new"]],
+["Sunset Projection Lamp","Home Decor","🌇",5.5,3,.5,69,330,58,260,11,0,0,0,"CN","f",7,["Golden-hour vibes every night"]],
+["Cloud Pillow Slides","Fashion","🩴",3.9,3.2,.5,49,520,85,350,9,0,0,[4,5,6,7,8,9],"CN","r",5,["Like walking on a cloud"]],
+["Magnetic Eyelash Kit","Beauty","👁️",3,1.2,.1,45,280,65,190,10,0,0,0,"KR","e",0,["Lashes in 30 seconds, no glue"]],
+["Handheld Garment Steamer","Home","♨️",9,4,.9,119,240,72,120,6,0,0,0,"TR","r",6,["Wrinkle-free hijab & clothes in 1 minute"]],
+["Glass Oil Sprayer Bottle","Kitchen","🫒",2.4,2,.35,35,210,48,90,3,1,0,0,"KR","r",8,["Use 80% less oil"]],
+["Air Fryer Paper Liners (100)","Kitchen","🍟",2,2.4,.5,29,190,40,70,2,0,0,0,"US","r",9,["Zero scrubbing after the air fryer"]],
+["Earbuds Cleaning Pen","Gadgets","🎧",1.2,.8,.05,25,150,30,60,1,0,0,0,"JP","r",9,["Gross… but satisfying"]],
+["Foldable Phone Tripod Stand","Gadgets","📱",3.6,2,.3,49,270,80,310,20,0,0,0,"CN","e",0,["Film content anywhere"]],
+["Silicone Stretch Lids (6)","Kitchen","🫙",2.1,1.5,.3,29,140,50,170,8,0,0,0,"DE","d",3,["Ditch the plastic wrap"]],
+["USB Electric Bakhoor Burner","Home Decor","🪔",6.5,3,.4,79,120,34,30,2,0,0,[1,2,3,5,6],"AE","r",8,["Bakhoor without smoke or charcoal"]],
+["Leakproof Kids Bento Box","School","🍙",4.8,3,.5,59,130,28,45,2,0,0,[8,9,10],"JP","r",9,["No more soggy school lunches"]],
+["Football Rebounder Net","Sports","⚽",11,7,2.2,169,95,40,35,1,0,0,[5,6,7,8],"BR","r",6,["Train like a pro in your backyard"]],
+];
+function seeded(s){return()=>{s=Math.sin(s)*10000;return s-Math.floor(s)}}
+function genTrend(origin,shape,t0,seed){const r=seeded(seed),o=MC[origin]?.[4]||'anglo',out={};
+ MK.forEach(([c,,,,g],k)=>{const L=c===origin?0:LAG[o][g]+Math.round(r()*1.6);const a=[];const amp=55+r()*35;
+  for(let t=0;t<16;t++){const x=t-(t0+3+L);let v;
+   if(shape==='r')v=10+amp/(1+Math.exp(-x/1.6));else if(shape==='f')v=12+amp*Math.exp(-((x/2.6)**2));else if(shape==='d')v=12+amp/(1+Math.exp(x/2));else v=48+r()*10;
+   a.push(Math.round(Math.max(2,Math.min(100,v+(r()-.5)*7))))}out[c]=a});return out}
+let DB=RAW.map((x,i)=>mk({name:x[0],cat:x[1],icon:x[2],cost:x[3],ship:x[4],kg:x[5],tnd:x[6],ads:x[7],adDays:x[8],stores:x[9],tnSellers:x[10],fragile:!!x[11],restricted:!!x[12],seasons:x[13]||0,origin:x[14],trend:genTrend(x[14],x[15],x[16],i*13+7),hooks:x[17],source:'demo',id:'d'+i}));
+function mk(p){p.suppliers=p.suppliers||[['1688','https://s.1688.com/selloffer/offer_search.htm?keywords='],['AliExpress','https://www.aliexpress.com/wholesale?SearchText='],['Alibaba','https://www.alibaba.com/trade/search?SearchText=']].map(([n,u])=>({name:n,url:u+encodeURIComponent(p.name)}));return p}
+try{JSON.parse(localStorage.getItem('pk_import')||'[]').forEach(x=>DB.push(normalize(x)))}catch(e){}
+let PL=load('pk_pipe',{}),NOTES=load('pk_notes',{}),CMP=[],ALR=load('pk_alerts',{list:[{n:'Early winners',score:68,stage:'Emerging',tn:3},{n:'GO verdicts',verdict:'GO'}]});
+delete PL.__proto__;
+
+// ================= Engine =================
+const clamp=(v,a=0,b=100)=>Math.max(a,Math.min(b,v));const avg=a=>a.length?a.reduce((s,x)=>s+x,0)/a.length:0;
+function growth(a){const r=avg(a.slice(-4)),p=avg(a.slice(-8,-4));return p?(r-p)/p:0}
+const tookOff=a=>a.at(-1)>=45&&a.at(-1)>=2*Math.min(...a.slice(0,8));
+const peaked=a=>{const mx=Math.max(...a);return a.indexOf(mx)<a.length-3&&a.at(-1)<.8*mx&&mx>40};
+function landed(p,price){price=price??p.tnd;const goods=(p.cost+p.ship)*S.usd,duty=goods*S.duty/100,tax=goods*S.tax/100,vat=(goods+duty+tax)*S.vat/100,unit=goods+duty+tax+vat;
+ const conf=S.conf/100,ret=S.ret/100,cpa=S.cpa/(conf*(1-ret)),retLoss=(ret/(1-ret))*(S.deliv+S.retFee),profit=price-unit-S.deliv-cpa-retLoss;
+ return {goods,duty,tax,vat,unit,deliv:S.deliv,cpa,retLoss,profit,margin:profit/price,breakeven:unit+S.deliv+cpa+retLoss,mult:price/unit}}
+function wave(p){const on=MK.filter(m=>tookOff(p.trend[m[0]])).map(m=>m[0]),grp=g=>on.some(c=>MC[c][4]===g);
+ let eta,stage,ws;
+ if(grp('em')){eta='Arriving now (0–4 wks)';stage=4;ws=on.length>=8?55:80}else if(grp('eu')){eta='Soon (4–8 wks)';stage=3;ws=95}else if(grp('anglo')){eta='6–10 wks';stage=2;ws=85}else if(grp('asia')){eta='8–16 wks';stage=1;ws=70}else{eta='No wave yet';stage=0;ws=25}
+ const origin=on.length?on.reduce((b,c)=>{const i=p.trend[c].findIndex(v=>v>=38);const j=p.trend[b].findIndex(v=>v>=38);return (i>=0&&(j<0||i<j))?c:b},on[0]):p.origin;
+ if(p.tnSellers>S.c.tnW)ws-=35;return {on,eta,stage,ws:clamp(ws),origin}}
+function metrics(p){const g={};MK.forEach(m=>g[m[0]]=growth(p.trend[m[0]]));const gv=Object.values(g);
+ const gAvg=avg(gv),breadth=gv.filter(x=>x>.1).length,vel=clamp(50+gAvg*130+breadth*2.5);
+ const sat=clamp(p.stores/8+p.ads/20+p.tnSellers*2.5);const L=landed(p);const mar=clamp(L.margin*220);
+ const mo=new Date().getMonth()+1,soon=[mo,mo%12+1,(mo+1)%12+1],inSeason=!p.seasons||p.seasons.some(s=>soon.includes(s));
+ let fit=55;if(p.tnd>=S.c.pMin&&p.tnd<=S.c.pMax)fit+=25;else if(p.tnd>250)fit-=20;if(inSeason)fit+=20;if(p.restricted)fit-=50;fit=clamp(fit);
+ const log=clamp(100-p.kg*25-(p.fragile?25:0)-(p.restricted?40:0));const W=wave(p);
+ const w=S.w,tw=Object.values(w).reduce((a,b)=>a+b,0)||1;
+ const score=Math.round((vel*w.vel+mar*w.mar+(100-sat)*w.sat+fit*w.fit+log*w.log+W.ws*w.wave)/tw);
+ const stage=gAvg<-.05?'Declining':sat>65?'Peak':sat<38&&gAvg>.05?'Emerging':'Rising';
+ const m={g,gAvg,breadth,vel,sat,mar,fit,log,score,stage,L,W,inSeason};m.J=judge(p,m);return m}
+function M(p){return p._m||(p._m=metrics(p))}function resetM(){DB.forEach(p=>delete p._m)}
+
+// ================= Success criteria & judgement =================
+function judge(p,m){const c=S.c,L=m.L,R=[];
+ const add=(key,name,hard,st,val,why)=>R.push({key,name,hard,st,val,why});
+ add('margin','Net margin after ads, delivery & returns',1,L.margin*100>=c.margin?'p':L.margin*100>=c.marginW?'w':'f',Math.round(L.margin*100)+'%',`Target ≥${c.margin}% (≥${c.marginW}% acceptable)`);
+ add('profit','Net profit per delivered order',0,L.profit>=c.profit?'p':L.profit>=c.profitW?'w':'f',tnd(L.profit),`Target ≥${c.profit} TND`);
+ add('price','Impulse-buy price range for COD',0,p.tnd>=c.pMin&&p.tnd<=c.pMax?'p':p.tnd<=c.pMax*1.5?'w':'f',tnd(p.tnd),`Sweet spot ${c.pMin}–${c.pMax} TND`);
+ add('vel','Global demand momentum',0,m.vel>=c.vel?'p':m.vel>=c.vel-15?'w':'f',Math.round(m.vel)+'/100',`Velocity ≥${c.vel}`);
+ add('breadth','Validated in multiple markets',0,m.breadth>=c.breadth?'p':m.breadth>=1?'w':'f',m.breadth+' of 12',`Rising in ≥${c.breadth} markets`);
+ add('sat','Tunisian competition',1,p.tnSellers<=c.tnMax?'p':p.tnSellers<=c.tnW?'w':'f',p.tnSellers+' sellers',`≤${c.tnMax} ideal, >${c.tnW} saturated`);
+ add('ads','Proven by long-running ads',0,p.adDays>=c.adDays?'p':p.adDays>=c.adDays/2?'w':'f',p.adDays+' days',`Longest ad ≥${c.adDays} days`);
+ add('wave','Trend timing (window still open)',0,m.W.stage>=1&&m.W.stage<=3?'p':m.W.stage===4&&p.tnSellers<=c.tnMax?'w':m.W.stage===0?'w':'f',m.W.eta,'Best when the wave has started abroad but not yet reached North Africa');
+ add('log','Easy logistics',0,p.kg<=c.kg&&!p.fragile?'p':p.kg<=c.kg*2?'w':'f',p.kg+' kg'+(p.fragile?' · fragile':''),`≤${c.kg} kg and not fragile`);
+ add('import','Import-safe for Tunisia',1,p.restricted?'f':'p',p.restricted?'Restricted':'OK','No authorization required (check the HS code)');
+ add('season','Season fit (next 3 months)',0,m.inSeason?'p':'w',p.seasons?p.seasons.map(s=>MON[s-1]).join(', '):'Evergreen','In season soon, or evergreen');
+ add('trend','Lifecycle stage',0,m.stage==='Emerging'||m.stage==='Rising'?'p':m.stage==='Peak'?'w':'f',m.stage,'Emerging or Rising');
+ const pts=R.reduce((s,r)=>s+(r.st==='p'?2:r.st==='w'?1:0),0),max=R.length*2,hardFail=R.filter(r=>r.hard&&r.st==='f'),fails=R.filter(r=>r.st==='f');
+ let v;if(hardFail.length)v='AVOID';else if(m.score>=68&&pts>=max*.78&&fails.length===0)v='GO';else if(m.score>=55&&pts>=max*.6&&fails.length<=2)v='TEST';else v='WATCH';
+ const conf=Math.round(clamp((p.source==='collector'?80:p.source==='ai'?45:35)+(p.ads>100?8:0)+(p.adDays>=30?7:0),0,95));
+ const pass=R.filter(r=>r.st==='p').map(r=>r.name.toLowerCase()),risk=R.filter(r=>r.st!=='p').sort((a,b)=>(a.st==='f'?0:1)-(b.st==='f'?0:1)||b.hard-a.hard);
+ const ACT={GO:`Order 30–50 units of test stock (or work with a local supplier), launch 3–5 creatives at about 20–30 TND/day each, and scale the winner once you hit ≥2× ROAS after returns.`,
+  TEST:`Validate cheaply first: 10–20 units or a pre-order landing page, with 2–3 creatives at about 15 TND/day for 3–4 days. Fix the risks below before you scale.`,
+  WATCH:`Don't stock yet. Add it to the pipeline and check again in 2 weeks for more momentum or better unit cost.`,
+  AVOID:`Skip this one. ${hardFail.map(r=>r.name).join(', ')} fails a must-have criterion.`};
+ const txt=`${v==='GO'?'Strong candidate.':v==='TEST'?'Promising, but needs validation.':v==='WATCH'?'Not ready yet.':'Not viable for Tunisia right now.'} Strengths: ${pass.slice(0,3).join(', ')||'none'}. ${risk.length?'Main risks: '+risk.slice(0,3).map(r=>r.name.toLowerCase()+' ('+r.val+')').join('; ')+'.':'No major risks found.'}`;
+ return {R,pts,max,v,conf,txt,action:ACT[v]}}
+const VC={GO:['🚀','Launch'],TEST:['🧪','Test small'],WATCH:['👀','Monitor'],AVOID:['⛔','Skip']};
+const vchip=v=>`<span class="chip v-${v}">${VC[v][0]} ${v}</span>`;
+
+// ================= UI helpers =================
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const scol=s=>s>=75?'#1fd17a':s>=62?'#8bd346':s>=48?'#ffb020':'#ff4d4f';
+function ring(s,sz=44){const r=sz/2-4,c=2*Math.PI*r;return `<svg width="${sz}" height="${sz}" style="flex:none"><circle cx="${sz/2}" cy="${sz/2}" r="${r}" stroke="var(--panel2)" stroke-width="4" fill="none"/><circle cx="${sz/2}" cy="${sz/2}" r="${r}" stroke="${scol(s)}" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="${c*s/100} ${c}" transform="rotate(-90 ${sz/2} ${sz/2})"/><text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="${sz/3.2}" font-weight="800" fill="var(--txt)">${s}</text></svg>`}
+const pct=x=>(x>=0?'+':'')+Math.round(x*100)+'%';
+const tnd=x=>(Math.round(x*10)/10).toLocaleString('fr-FR')+' TND';
+const bar=(v,c)=>`<div class="bar"><i style="width:${clamp(v)}%;background:${c||scol(v)}"></i></div>`;
+function spark(a,col,w=110,h=32){const mx=Math.max(...a),mn=Math.min(...a),r=mx-mn||1,pts=a.map((v,i)=>[(i/(a.length-1)*w),(h-3-(v-mn)/r*(h-6))]);const id='g'+Math.random().toString(36).slice(2,7);
+ return `<svg width="${w}" height="${h}" style="display:block"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".35"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs><path d="M0,${h} L${pts.map(p=>p.join(',')).join(' L')} L${w},${h}Z" fill="url(#${id})"/><polyline fill="none" stroke="${col}" stroke-width="2" points="${pts.map(p=>p.join(',')).join(' ')}"/></svg>`}
+const globalAvg=p=>p.trend.US.map((_,i)=>Math.round(avg(MK.map(m=>p.trend[m[0]][i]))));
+function lines(t,keys,w=660,h=230){const mx=Math.max(1,...keys.flatMap(k=>t[k]));let g='';for(let i=0;i<=4;i++){const y=16+i*(h-40)/4;g+=`<line x1="30" x2="${w-6}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="0" y="${y+4}" fill="var(--mut2)" font-size="10">${Math.round(mx-i*mx/4)}</text>`}
+ return `<svg viewBox="0 0 ${w} ${h}" width="100%">${g}${keys.map(k=>`<polyline fill="none" stroke="${MC[k][3]}" stroke-width="2.4" stroke-linejoin="round" points="${t[k].map((v,i)=>`${30+i/(t[k].length-1)*(w-40)},${h-24-v/mx*(h-40)}`).join(' ')}"/>`).join('')}<text x="30" y="${h-4}" fill="var(--mut2)" font-size="10">16 weeks ago</text><text x="${w-56}" y="${h-4}" fill="var(--mut2)" font-size="10">this week</text></svg>`}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2200)}
+const star=id=>`<span class="star ${PL[id]?'on':''}" data-star="${id}" title="Add to pipeline">${PL[id]?'★':'☆'}</span>`;
+let LIVE=0;const hasDemo=()=>DB.some(p=>p.source==='demo');
+const demoNote=()=>hasDemo()?`<div class="demo">⚠️ <b>Demo dataset</b>: the numbers are illustrative. Real data loads automatically once the collector has created <span class="mono">products.json</span> in your repo, or generate candidates in <a href="#studio">AI Studio</a>. Cost defaults are estimates you can change in <a href="#config">Criteria & Costs</a>.</div>`:'';
+const pn=p=>`<div class="pn"><div class="pimg">${p.icon}</div><div style="min-width:0"><b>${p.name}</b><small>${p.cat} · ${MC[p.origin]?.[2]||''} origin</small></div></div>`;
+const hl=(v,good)=>`<span class="${good?'up':'down'}">${v}</span>`;
+
+// ================= Views =================
+const V={};
+V.dashboard=()=>{const ps=[...DB].sort((a,b)=>M(b).score-M(a).score),cnt=k=>DB.filter(p=>M(p).J.v===k).length;
+ const sig=[];DB.forEach(p=>MK.forEach(m=>{const g=M(p).g[m[0]];if(g>.45)sig.push([p,m,g])}));sig.sort((a,b)=>b[2]-a[2]);
+ const cats={};DB.forEach(p=>(cats[p.cat]=cats[p.cat]||[]).push(M(p).score));const catR=Object.entries(cats).map(([c,a])=>[c,Math.round(avg(a)),a.length]).sort((a,b)=>b[1]-a[1]).slice(0,8);
+ return `${demoNote()}<div class="grid g5">${['GO','TEST','WATCH','AVOID'].map(v=>`<a class="card kpi" href="#verdicts" style="text-decoration:none;color:inherit"><div class="l">${VC[v][0]} ${v} verdicts</div><div class="v" style="color:var(--${v.toLowerCase()})">${cnt(v)}</div><div class="d">${VC[v][1]}</div></a>`).join('')}
+ <div class="card kpi"><div class="l">📦 Products tracked</div><div class="v">${DB.length}</div><div class="d">across 12 source markets</div></div></div>
+ <div class="grid" style="grid-template-columns:1.7fr 1fr;margin-top:14px"><div class="card"><h3>🏆 Top opportunities for Tunisia<span class="sp"></span><a href="#explorer" class="btn sm">View all</a></h3><table><tr><th>Product</th><th>Score</th><th>Verdict</th><th>Global trend</th><th>Wave ETA</th><th>Profit/order</th></tr>
+ ${ps.slice(0,7).map(p=>{const m=M(p);return `<tr class="row" data-open="${p.id}"><td>${pn(p)}</td><td>${ring(m.score,40)}</td><td>${vchip(m.J.v)}</td><td>${spark(globalAvg(p),scol(m.score),90,28)}</td><td class="mut" style="font-size:12.5px">${m.W.eta}</td><td>${hl(tnd(m.L.profit),m.L.profit>0)}</td></tr>`}).join('')}</table></div>
+ <div class="grid"><div class="card"><h3>⚡ Live signals</h3>${sig.slice(0,6).map(([p,m,g])=>`<div class="r2 row" data-open="${p.id}"><span>${m[2]} <b>${p.name}</b> <span class="mut">in ${m[1]}</span></span><b class="up">${pct(g)}</b></div>`).join('')||'<span class="mut">No strong signals</span>'}</div>
+ <div class="card"><h3>📅 Coming up in Tunisia</h3>${upcoming()}</div></div></div>
+ <div class="grid g2" style="margin-top:14px"><div class="card"><h3>🌍 Momentum by source market</h3>${MK.map(m=>{const g=avg(DB.map(p=>M(p).g[m[0]]));return `<div class="r2"><span>${m[2]} ${m[1]}</span><span style="display:flex;gap:10px;align-items:center;width:55%"><span style="flex:1">${bar(50+g*120,m[3])}</span><b class="${g>=0?'up':'down'} mono" style="width:52px;text-align:right">${pct(g)}</b></span></div>`}).join('')}</div>
+ <div class="card"><h3>📂 Category leaderboard</h3>${catR.map(([c,s,n])=>`<div style="margin-bottom:11px"><div class="r2" style="border:0;padding:0 0 4px"><span>${c} <span class="mut">(${n})</span></span><b>${s}</b></div>${bar(s)}</div>`).join('')}</div></div>`};
+
+let F={q:'',cat:'',stage:'',verdict:'',mkt:'',sort:'score',dir:-1,maxP:'',minS:0,noRestr:false,lowTN:false,view:'table'};
+function filtered(){return DB.filter(p=>{const m=M(p);return (!F.q||p.name.toLowerCase().includes(F.q.toLowerCase())||p.cat.toLowerCase().includes(F.q.toLowerCase()))&&(!F.cat||p.cat===F.cat)&&(!F.stage||m.stage===F.stage)&&(!F.verdict||m.J.v===F.verdict)&&(!F.mkt||m.g[F.mkt]>.1)&&(!F.maxP||p.tnd<=+F.maxP)&&m.score>=F.minS&&(!F.noRestr||!p.restricted)&&(!F.lowTN||p.tnSellers<=S.c.tnMax)})}
+V.explorer=()=>{const cats=[...new Set(DB.map(p=>p.cat))].sort();let ps=filtered();
+ const key={score:p=>M(p).score,name:p=>p.name,vel:p=>M(p).vel,sat:p=>M(p).sat,profit:p=>M(p).L.profit,tnd:p=>p.tnd,tn:p=>p.tnSellers,breadth:p=>M(p).breadth,verdict:p=>['AVOID','WATCH','TEST','GO'].indexOf(M(p).J.v)}[F.sort];
+ ps.sort((a,b)=>{const x=key(a),y=key(b);return (x>y?1:x<y?-1:0)*F.dir});const th=(k,l)=>`<th data-sort="${k}">${l}${F.sort===k?(F.dir<0?' ↓':' ↑'):''}</th>`;
+ const sel=(id,opts,cur,ph)=>`<select id="${id}"><option value="">${ph}</option>${opts.map(o=>Array.isArray(o)?`<option value="${o[0]}" ${cur===o[0]?'selected':''}>${o[1]}</option>`:`<option ${cur===o?'selected':''}>${o}</option>`).join('')}</select>`;
+ return `${demoNote()}<div class="filters"><input type="text" id="fq" placeholder="Search products or categories…" value="${F.q}" style="min-width:220px">
+ ${sel('fcat',cats,F.cat,'All categories')}${sel('fver',['GO','TEST','WATCH','AVOID'],F.verdict,'All verdicts')}${sel('fst',['Emerging','Rising','Peak','Declining'],F.stage,'All stages')}${sel('fmk',MK.map(m=>[m[0],m[2]+' Rising in '+m[1]]),F.mkt,'Any market')}
+ <input type="number" id="fmax" placeholder="Max TND" value="${F.maxP}" style="width:100px"><select id="fmin">${[0,45,55,65,75].map(v=>`<option value="${v}" ${F.minS==v?'selected':''}>Score ≥ ${v}</option>`).join('')}</select>
+ <label><input type="checkbox" id="fnr" ${F.noRestr?'checked':''}> Import-safe</label><label><input type="checkbox" id="flt" ${F.lowTN?'checked':''}> Low TN competition</label>
+ <span class="sp"></span><span class="mut">${ps.length} results</span><div class="seg"><button data-fv="table" class="${F.view==='table'?'on':''}">☰ Table</button><button data-fv="grid" class="${F.view==='grid'?'on':''}">▦ Grid</button></div></div>
+ ${F.view==='grid'?`<div class="cards">${ps.map(pcard).join('')}</div>`:`<div class="card" style="padding:0;overflow:auto"><table><tr><th></th><th title="Compare">⇆</th>${th('name','Product')}${th('score','Score')}${th('verdict','Verdict')}<th>Stage</th><th>Trend</th>${th('vel','Velocity')}${th('breadth','Markets')}${th('sat','Saturation')}${th('tn','TN sellers')}${th('tnd','Price')}${th('profit','Profit/order')}</tr>
+ ${ps.map(p=>{const m=M(p);return `<tr class="row" data-open="${p.id}"><td>${star(p.id)}</td><td><input type="checkbox" data-cmp="${p.id}" ${CMP.includes(p.id)?'checked':''}></td><td style="max-width:260px">${pn(p)}</td><td>${ring(m.score,40)}</td><td>${vchip(m.J.v)}</td><td><span class="chip st-${m.stage}">${m.stage}</span></td><td>${spark(globalAvg(p),scol(m.score),80,26)}</td>
+ <td style="min-width:80px">${Math.round(m.vel)}${bar(m.vel,'#4f9dff')}</td><td>${m.breadth}/12</td><td style="min-width:80px">${Math.round(m.sat)}${bar(m.sat,m.sat>65?'var(--bad)':m.sat>38?'var(--warn)':'var(--ok)')}</td><td>${p.tnSellers}</td><td class="mono">${tnd(p.tnd)}</td><td>${hl('<b>'+tnd(m.L.profit)+'</b>',m.L.profit>0)}<br><small class="mut">${Math.round(m.L.margin*100)}% margin</small></td></tr>`}).join('')}</table>${ps.length?'':'<div class="empty">No products match these filters.</div>'}</div>`}
+ ${CMP.length?`<div style="position:sticky;bottom:14px;margin-top:14px;display:flex;justify-content:center"><a class="btn pri" href="#compare">⇆ Compare ${CMP.length} selected</a></div>`:''}`};
+function pcard(p){const m=M(p);return `<div class="pc" data-open="${p.id}"><div style="display:flex;justify-content:space-between;gap:8px">${pn(p)}${ring(m.score,46)}</div><div style="margin:12px 0 8px">${spark(globalAvg(p),scol(m.score),240,40)}</div>
+ <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">${vchip(m.J.v)}<span class="chip st-${m.stage}">${m.stage}</span></div><div class="r2"><span class="mut">Profit/order</span>${hl('<b>'+tnd(m.L.profit)+'</b>',m.L.profit>0)}</div><div class="r2"><span class="mut">Wave ETA</span><span>${m.W.eta}</span></div><div class="r2"><span class="mut">TN sellers</span><b>${p.tnSellers}</b></div><div style="position:absolute;top:10px;right:64px">${star(p.id)}</div></div>`}
+
+V.verdicts=()=>`${demoNote()}<div class="card" style="margin-bottom:14px"><h3>⚖️ How PeeK judges a product</h3><p class="mut" style="margin:-4px 0 0">Each product is checked against 12 success criteria. A <b>must-have</b> criterion (net margin, Tunisian competition, import safety) that fails means <b>AVOID</b>. <b>GO</b> needs a Winning Score ≥68, at least 78% of criteria points and no failures. <b>TEST</b> needs a score ≥55, at least 60% of points and ≤2 failures. Everything else is <b>WATCH</b>. You can change the thresholds in <a href="#config">Criteria & Costs</a>.</p></div>
+ <div class="kan" style="grid-template-columns:repeat(4,minmax(240px,1fr))">${['GO','TEST','WATCH','AVOID'].map(v=>{const ps=DB.filter(p=>M(p).J.v===v).sort((a,b)=>M(b).score-M(a).score);return `<div class="col"><h4>${vchip(v)}<span class="mut">${ps.length}</span></h4>${ps.map(p=>{const m=M(p);return `<div class="kc" data-open="${p.id}" style="cursor:pointer"><div style="display:flex;justify-content:space-between;gap:6px">${pn(p)}${ring(m.score,36)}</div><div style="margin-top:8px">${bar(m.J.pts/m.J.max*100)}</div><div class="mut" style="font-size:11.5px;margin-top:5px">${m.J.pts}/${m.J.max} criteria pts · ${tnd(m.L.profit)}/order</div></div>`}).join('')||'<div class="empty" style="padding:20px">—</div>'}</div>`}).join('')}</div>`;
+
+V.heatmap=()=>{const ps=[...DB].sort((a,b)=>M(b).score-M(a).score);const hc=g=>{const v=clamp(g*100,-100,100);return v>=0?`rgba(31,209,122,${.12+v/120})`:`rgba(255,77,79,${.12-v/140})`};
+ return `${demoNote()}<div class="card" style="overflow:auto"><h3>🔥 4-week growth by source market<span class="sp"></span><span class="mut" style="font-weight:500;font-size:12px">Green = rising · red = falling · click a row for details</span></h3>
+ <table class="heat"><tr><th style="padding:8px">Product</th>${MK.map(m=>`<th style="text-align:center;padding:8px 2px" title="${m[1]}">${m[2]}<br>${m[0]}</th>`).join('')}<th>Verdict</th></tr>
+ ${ps.map(p=>{const m=M(p);return `<tr class="row" data-open="${p.id}"><td style="padding:6px 10px;white-space:nowrap;border:0">${p.icon} ${p.name}</td>${MK.map(k=>`<td><div class="c" style="background:${hc(m.g[k[0]])}">${pct(m.g[k[0]])}</div></td>`).join('')}<td style="padding:0 8px;border:0">${vchip(m.J.v)}</td></tr>`}).join('')}</table></div>`};
+
+V.waves=()=>{const ps=[...DB].sort((a,b)=>(M(b).W.ws-M(a).W.ws)||(M(b).score-M(a).score));const ST=['No wave','🌏 Asia','🇺🇸 US/UK','🇪🇺 Europe','🌍 TR/Gulf'];
+ return `${demoNote()}<div class="card" style="margin-bottom:14px"><h3>🌊 How trends travel</h3><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700">${['🇨🇳🇰🇷🇯🇵 Asia','🇺🇸🇬🇧 US/UK','🇩🇪🇫🇷🇪🇸🇮🇹 Europe','🇹🇷🇦🇪 Türkiye/Gulf','🇹🇳 Tunisia'].map((s,i)=>`<span class="chip" style="background:var(--panel2);padding:7px 12px;font-size:12.5px">${s}</span>${i<4?'<span class="mut">→</span>':''}`).join('')}</div><p class="mut" style="margin:10px 0 0;font-size:12.5px">Products usually reach North Africa after Europe and Türkiye/Gulf. The best time to launch is when a product has taken off in Asia, the US or Europe but has very few Tunisian sellers.</p></div>
+ <div class="card" style="padding:0;overflow:auto"><table><tr><th>Product</th><th>First took off</th><th>Wave reached</th><th>Markets on</th><th>ETA to Tunisia</th><th>TN sellers</th><th>Window</th></tr>
+ ${ps.map(p=>{const m=M(p),W=m.W;return `<tr class="row" data-open="${p.id}"><td>${pn(p)}</td><td>${MC[W.origin]?.[2]} ${MC[W.origin]?.[1]}</td><td style="min-width:170px"><div style="display:flex;gap:3px">${[1,2,3,4].map(i=>`<div style="flex:1;height:8px;border-radius:4px;background:${i<=W.stage?'linear-gradient(90deg,var(--acc),var(--acc2))':'var(--panel2)'}"></div>`).join('')}</div><small class="mut">${ST[W.stage]}</small></td><td>${W.on.map(c=>MC[c][2]).join('')||'—'}</td><td><b>${W.eta}</b></td><td>${p.tnSellers}</td><td>${ring(W.ws,38)}</td></tr>`}).join('')}</table></div>`};
+
+V.map=()=>{const W=680,H=420;const dots=DB.map(p=>{const m=M(p);const x=46+m.sat/100*(W-70),y=H-34-m.vel/100*(H-64);return `<g class="row" data-open="${p.id}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="${9+m.score/10}" fill="${scol(m.score)}" fill-opacity=".22" stroke="${scol(m.score)}"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="14">${p.icon}</text><title>${p.name}: score ${m.score}, ${m.J.v}</title></g>`}).join('');
+ return `${demoNote()}<div class="card"><h3>🎯 Opportunity map: momentum vs saturation<span class="sp"></span><span class="mut" style="font-weight:500;font-size:12px">Bubble size and colour = Winning Score</span></h3><svg viewBox="0 0 ${W} ${H}" width="100%" style="max-height:72vh">
+ <rect x="46" y="30" width="${(W-70)/2}" height="${(H-64)/2}" rx="10" fill="#1fd17a" fill-opacity=".07"/><text x="58" y="50" fill="#1fd17a" font-size="12" font-weight="800">SWEET SPOT · rising fast, few sellers</text><text x="${W-180}" y="50" fill="#ffb020" font-size="12" font-weight="700">Hot but crowded</text><text x="58" y="${H-46}" fill="var(--mut2)" font-size="12">Slow / niche</text><text x="${W-140}" y="${H-46}" fill="#ff4d4f" font-size="12" font-weight="700">Saturated: avoid</text>
+ <line x1="46" y1="${H-34}" x2="${W-20}" y2="${H-34}" stroke="var(--line2)"/><line x1="46" y1="30" x2="46" y2="${H-34}" stroke="var(--line2)"/><text x="${W/2}" y="${H-10}" fill="var(--mut)" font-size="11" text-anchor="middle">Saturation →</text><text x="16" y="${H/2}" fill="var(--mut)" font-size="11" transform="rotate(-90 16 ${H/2})" text-anchor="middle">Momentum →</text>${dots}</svg></div>`};
+
+V.ads=()=>{const ps=[...DB].sort((a,b)=>b.adDays-a.adDays);return `${demoNote()}<div class="card" style="margin-bottom:14px"><h3>🎬 Ads that keep running are ads that make money</h3><p class="mut" style="margin:-4px 0 0">An ad that has run for more than 30 days is almost always profitable. Study its hook, then rewrite it in Tunisian Darija in <a href="#studio">AI Studio</a>.</p></div>
+ <div class="cards">${ps.map(p=>`<div class="pc" data-open="${p.id}">${pn(p)}<div style="display:flex;justify-content:space-between;margin:12px 0 5px;font-size:12px"><span class="mut">${p.ads} active ads</span><b>${p.adDays} days longest</b></div>${bar(Math.min(100,p.adDays/1.8),'linear-gradient(90deg,var(--acc),var(--acc2))')}<div style="margin-top:10px">${p.hooks.map(h=>`<div class="hook">🪝 “${h}”</div>`).join('')}</div>
+ <div style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn sm" target="_blank" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&q=${encodeURIComponent(p.name)}">Meta 🌍 ↗</a><a class="btn sm" target="_blank" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TN&q=${encodeURIComponent(p.name)}">Meta 🇹🇳 ↗</a><a class="btn sm" target="_blank" href="https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?keyword=${encodeURIComponent(p.name)}">TikTok ↗</a></div></div>`).join('')}</div>`};
+
+let STU={tab:'scout',items:[],status:'',chat:[]};
+V.studio=()=>`<div class="seg" style="margin-bottom:14px">${[['scout','🔭 Product Scout'],['analyst','💬 AI Analyst'],['creative','✍️ Creative Generator']].map(([k,l])=>`<button data-stu="${k}" class="${STU.tab===k?'on':''}">${l}</button>`).join('')}</div>`+
+ (STU.tab==='scout'?`<div class="card" style="margin-bottom:14px"><h3>🔭 Find new candidates</h3><p class="mut" style="margin-top:-6px;font-size:12.5px">Claude suggests products from what it knows about global trends. PeeK then scores and judges them. These are leads to verify, not live data.</p>
+ <div class="filters"><input type="text" id="sq" placeholder="Niche, e.g. kitchen gadgets, Ramadan gifts, baby" style="flex:1;min-width:240px" value="${STU.q||''}"><select id="smk"><option value="">Trending anywhere</option>${MK.map(m=>`<option value="${m[1]}">${m[2]} ${m[1]}</option>`).join('')}</select><select id="sb"><option value="">Any price</option><option>under 50 TND</option><option>50–150 TND</option><option>150+ TND</option></select><button class="btn pri" id="sgo">Scout</button></div><div class="mut" id="sout">${STU.status}</div></div>
+ <div class="cards">${STU.items.map((x,i)=>`<div class="card"><div class="pn"><div class="pimg">${x.icon||'📦'}</div><div><b>${x.name}</b><small>${x.cat} · ~${x.tnd} TND</small></div></div><p class="mut" style="font-size:13px">${x.why||''}</p>${(x.hooks||[]).map(h=>`<div class="hook">🪝 ${h}</div>`).join('')}<button class="btn sm pri" data-addsc="${i}" ${x._added?'disabled':''}>${x._added?'✓ Added':'+ Add & judge'}</button></div>`).join('')}</div>`
+ :STU.tab==='analyst'?`<div class="card"><h3>💬 Ask about your dataset</h3><p class="mut" style="margin-top:-6px;font-size:12.5px">The analyst can search and read every product in PeeK, including scores, verdicts and profit. Try: “Which 3 products should I launch for Ramadan and why?”</p>
+ <div id="chat" style="max-height:52vh;overflow:auto;margin-bottom:10px">${STU.chat.map(m=>`<div class="msg ${m.role==='user'?'u':'a'}">${esc(m.content)}</div>`).join('')}</div><div class="filters"><input type="text" id="cq" placeholder="Ask the analyst…" style="flex:1"><button class="btn pri" id="cgo">Send</button><button class="btn" id="cclr">Clear</button></div></div>`
+ :`<div class="card"><h3>✍️ Creative generator</h3><div class="filters"><select id="gp">${DB.map(p=>`<option value="${p.id}">${p.icon} ${p.name}</option>`).join('')}</select><select id="glang"><option>Tunisian Darija (Latin script)</option><option>Tunisian Darija (Arabic script)</option><option>French</option><option>Darija + French mix</option></select><select id="gtype"><option>15s TikTok/Reels script + 5 hooks</option><option>Facebook ad copy (3 variants)</option><option>Product page (title, bullets, FAQ, offer)</option><option>Full launch plan (angles, offer, test budget)</option><option>WhatsApp order-confirmation script</option></select><button class="btn pri" id="ggo">Generate</button></div><pre class="out" id="gout">Pick a product and a format, then click Generate.</pre></div>`);
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+let CALC={};
+V.profit=()=>{const p=DB.find(x=>x.id===CALC.id)||DB[0];const price=CALC.price||p.tnd,L=landed(p,price);
+ const rows=[['Goods + international shipping',L.goods],['Customs duty ('+S.duty+'%)',L.duty],['Other import taxes ('+S.tax+'%)',L.tax],['VAT ('+S.vat+'%)',L.vat],['Landed unit cost',L.unit,1],['Local delivery',L.deliv],['Ad spend per delivered order',L.cpa],['COD return losses',L.retLoss],['Break-even selling price',L.breakeven,1]];
+ const bundle=[1,2,3].map(q=>{const pr=Math.round(price*(q===1?1:q===2?1.75:2.4)),u=L.unit*q,pf=pr-u-S.deliv-L.cpa-L.retLoss;return [q,pr,pf]});
+ return `<div class="grid g2"><div class="card"><h3>🧮 Landed cost & real profit</h3><div class="fg"><label class="f">Product</label><select id="cp">${DB.map(x=>`<option value="${x.id}" ${x.id===p.id?'selected':''}>${x.icon} ${x.name}</option>`).join('')}</select></div>
+ <div class="grid g2"><div class="fg"><label class="f">Supplier cost (USD)</label><input type="number" step=".1" id="cc" value="${p.cost}"></div><div class="fg"><label class="f">Shipping per unit (USD)</label><input type="number" step=".1" id="cs" value="${p.ship}"></div></div>
+ <div class="fg"><label class="f">Selling price: <b class="mono" style="color:var(--txt)">${price} TND</b></label><input type="range" id="cpr" min="10" max="${Math.max(400,p.tnd*2)}" value="${price}" style="width:100%"></div>
+ ${rows.map(([l,v,b])=>`<div class="r2" ${b?'style="font-weight:800"':''}><span>${l}</span><span class="mono">${tnd(v)}</span></div>`).join('')}<p class="mut" style="font-size:12px">${S.conf}% of orders confirmed · ${S.ret}% returned · ${S.cpa} TND ad spend per order · <a href="#config">edit assumptions</a></p></div>
+ <div class="grid"><div class="card"><div class="grid g3"><div class="kpi"><div class="l">Net profit / order</div><div class="v ${L.profit>0?'up':'down'}">${tnd(L.profit)}</div></div><div class="kpi"><div class="l">Net margin</div><div class="v">${Math.round(L.margin*100)}%</div></div><div class="kpi"><div class="l">Markup on landed cost</div><div class="v">${L.mult.toFixed(1)}×</div></div></div>
+ <div class="hook" style="margin-top:12px">${L.margin*100>=S.c.margin?'✅ Meets your margin target. There is room to test ads and absorb returns.':L.margin*100>=S.c.marginW?'⚠️ Below your target. Try bundles, a higher price or a cheaper supplier.':'❌ Not viable at this price.'} Aim for at least a 3× markup on landed cost for cash on delivery.</div></div>
+ <div class="card"><h3>📈 Price sensitivity</h3>${[.8,.9,1,1.15,1.3,1.5].map(k=>{const pr=Math.round(price*k),l=landed(p,pr);return `<div class="r2"><span class="mono">${pr} TND</span><span style="display:flex;gap:10px;align-items:center;width:60%"><span style="flex:1">${bar(clamp(l.margin*200),l.profit>0?'var(--ok)':'var(--bad)')}</span>${hl(tnd(l.profit),l.profit>0)}</span></div>`}).join('')}</div>
+ <div class="card"><h3>🎁 Bundle offers (raise order value)</h3>${bundle.map(([q,pr,pf])=>`<div class="r2"><span>${q}× for <b class="mono">${pr} TND</b></span>${hl(tnd(pf)+' profit',pf>0)}</div>`).join('')}</div></div></div>`};
+
+const EVENTS=[[1,'New Year sales · winter'],[2,'Ramadan 2027 starts ~Feb 8 (approx.)'],[3,'Eid al-Fitr ~Mar 9–10, 2027 (approx.)'],[5,'Eid al-Adha ~mid-May 2027 (approx.)'],[6,'Weddings · exams end · summer'],[7,'Peak summer · diaspora returns'],[8,'Summer · back-to-school prep'],[9,'Rentrée scolaire'],[11,'Black Friday · winter starts'],[12,'Winter · year-end gifts']];
+function upcoming(){const m=new Date().getMonth()+1;return [0,1,2,3].map(k=>{const mm=(m-1+k)%12+1;const ev=EVENTS.filter(e=>e[0]===mm).map(e=>e[1]).join(' · ')||'—';const n=DB.filter(p=>p.seasons&&p.seasons.includes(mm)).length;return `<div class="r2"><span><b>${MON[mm-1]}</b> <span class="mut">${ev}</span></span><span class="chip" style="background:var(--panel2)">${n} fits</span></div>`}).join('')+'<p class="mut" style="font-size:12px;margin-bottom:0">Order stock 4–6 weeks before a season (China shipping plus customs clearance).</p>'}
+V.seasons=()=>{const m=new Date().getMonth()+1;return `<div class="card" style="margin-bottom:14px"><h3>📅 Tunisian selling calendar</h3><div class="cal">${MON.map((x,i)=>`<div class="${i+1===m?'now':''} ${EVENTS.some(e=>e[0]===i+1)?'hot':''}">${x}</div>`).join('')}</div><p class="mut" style="font-size:12px;margin-bottom:0">Islamic holidays move about 11 days earlier each year. Check the exact dates.</p></div>
+ <div class="grid g3">${MON.map((x,i)=>{const ps=DB.filter(p=>p.seasons&&p.seasons.includes(i+1)).sort((a,b)=>M(b).score-M(a).score).slice(0,5);return `<div class="card"><h3>${x}${i+1===m?' <span class="chip st-Emerging">now</span>':''}</h3><div class="mut" style="font-size:12px;margin:-8px 0 8px">${EVENTS.filter(e=>e[0]===i+1).map(e=>e[1]).join(' · ')||'&nbsp;'}</div>${ps.map(p=>`<div class="r2 row" data-open="${p.id}"><span>${p.icon} ${p.name}</span>${vchip(M(p).J.v)}</div>`).join('')||'<span class="mut">Evergreen products only</span>'}</div>`}).join('')}</div>`};
+
+const STAGES=['Watching','Researching','Testing','Scaling','Dropped'];
+V.pipeline=()=>`<p class="mut" style="margin-top:-6px">Drag cards between columns. Star a product anywhere to add it here.</p><div class="kan">${STAGES.map(s=>{const ps=DB.filter(p=>PL[p.id]===s);return `<div class="col" data-col="${s}"><h4>${s}<span class="mut">${ps.length}</span></h4>${ps.map(p=>{const m=M(p);return `<div class="kc" draggable="true" data-drag="${p.id}"><div style="display:flex;justify-content:space-between;gap:6px"><span class="row" data-open="${p.id}" style="cursor:pointer"><b>${p.icon} ${p.name}</b></span>${star(p.id)}</div><div style="display:flex;gap:6px;margin-top:6px;align-items:center">${vchip(m.J.v)}<span class="mut" style="font-size:12px">${tnd(m.L.profit)}/order</span></div><select data-mv="${p.id}" style="width:100%;margin-top:8px;padding:4px 8px;font-size:12px">${STAGES.map(x=>`<option ${x===s?'selected':''}>${x}</option>`).join('')}</select></div>`}).join('')}</div>`}).join('')}</div>`;
+
+V.compare=()=>{const ps=CMP.map(id=>DB.find(p=>p.id===id)).filter(Boolean);if(ps.length<2)return `<div class="card empty">Select 2–4 products with the ⇆ checkbox in the <a href="#explorer">Explorer</a>, or use the Compare button on a product page.</div>`;
+ const rows=[['Winning Score',p=>M(p).score,1],['Verdict',p=>vchip(M(p).J.v)],['Criteria points',p=>M(p).J.pts,1],['Net profit / order',p=>M(p).L.profit,1,tnd],['Net margin',p=>M(p).L.margin,1,x=>Math.round(x*100)+'%'],['Selling price',p=>p.tnd,0,tnd],['Momentum',p=>Math.round(M(p).vel),1],['Markets rising',p=>M(p).breadth,1],['Saturation',p=>Math.round(M(p).sat),-1],['TN sellers',p=>p.tnSellers,-1],['Longest ad run (days)',p=>p.adDays,1],['Wave ETA',p=>M(p).W.eta],['Weight (kg)',p=>p.kg,-1]];
+ return `<div class="card" style="overflow:auto"><table><tr><th></th>${ps.map(p=>`<th style="text-transform:none;font-size:13px;color:var(--txt)">${p.icon} ${p.name} <span class="btn sm" data-uncmp="${p.id}">✕</span></th>`).join('')}</tr>
+ ${rows.map(([l,f,dir,fmt])=>{const vals=ps.map(f);const best=dir?vals.reduce((b,v,i)=>(dir>0?v>vals[b]:v<vals[b])?i:b,0):-1;return `<tr><td class="mut">${l}</td>${vals.map((v,i)=>`<td style="${i===best?'color:var(--ok);font-weight:800':''}">${fmt?fmt(v):v}${i===best?' ▲':''}</td>`).join('')}</tr>`}).join('')}</table>
+ <h3 style="margin-top:18px">Global trend (average of all 12 markets)</h3><div class="legend">${ps.map((p,i)=>`<span class="chip" style="background:var(--panel2);color:${['#ff3d6e','#7b61ff','#1fd17a','#ffb020'][i]}">● ${p.name}</span>`).join('')}</div>
+ <svg viewBox="0 0 660 200" width="100%">${ps.map((p,i)=>{const a=globalAvg(p);return `<polyline fill="none" stroke="${['#ff3d6e','#7b61ff','#1fd17a','#ffb020'][i]}" stroke-width="2.5" points="${a.map((v,j)=>`${20+j/(a.length-1)*630},${190-v*1.8}`).join(' ')}"/>`}).join('')}</svg></div>`};
+
+function alertMatch(r){return DB.filter(p=>{const m=M(p);return (!r.score||m.score>=r.score)&&(!r.stage||m.stage===r.stage)&&(r.tn==null||r.tn===''||p.tnSellers<=r.tn)&&(!r.verdict||m.J.v===r.verdict)&&(!r.mkt||m.g[r.mkt]>=(r.g||10)/100)})}
+V.alerts=()=>`<div class="grid" style="grid-template-columns:1fr 1.6fr"><div class="card"><h3>🔔 New alert rule</h3><div class="fg"><label class="f">Name</label><input type="text" id="an" placeholder="e.g. Korean beauty winners"></div><div class="grid g2"><div class="fg"><label class="f">Min score</label><input type="number" id="as" value="60"></div><div class="fg"><label class="f">Max TN sellers</label><input type="number" id="at" value="5"></div></div>
+ <div class="grid g2"><div class="fg"><label class="f">Verdict</label><select id="av"><option value="">Any</option><option>GO</option><option>TEST</option><option>WATCH</option></select></div><div class="fg"><label class="f">Stage</label><select id="ast"><option value="">Any</option><option>Emerging</option><option>Rising</option></select></div></div>
+ <div class="grid g2"><div class="fg"><label class="f">Rising in market</label><select id="am"><option value="">Any</option>${MK.map(m=>`<option value="${m[0]}">${m[2]} ${m[1]}</option>`).join('')}</select></div><div class="fg"><label class="f">by at least (%)</label><input type="number" id="ag" value="20"></div></div><button class="btn pri" id="aadd">Create rule</button>
+ <p class="mut" style="font-size:12px">Rules are checked every time data loads. For push alerts on WhatsApp or Telegram, add a notify step to the collector (see Data Sources).</p></div>
+ <div class="grid">${ALR.list.map((r,i)=>{const ms=alertMatch(r);return `<div class="card"><h3>${ms.length?'🔴':'⚪'} ${esc(r.n)}<span class="chip" style="background:var(--panel2)">${ms.length} matches</span><span class="sp"></span><span class="btn sm" data-adel="${i}">Delete</span></h3><div class="mut" style="font-size:12px;margin:-8px 0 8px">${[r.score&&'score ≥ '+r.score,r.verdict&&'verdict '+r.verdict,r.stage,r.tn!=null&&r.tn!==''&&'≤'+r.tn+' TN sellers',r.mkt&&'rising '+(r.g||10)+'%+ in '+MC[r.mkt][1]].filter(Boolean).join(' · ')}</div>${ms.slice(0,6).map(p=>`<div class="r2 row" data-open="${p.id}"><span>${p.icon} ${p.name}</span>${vchip(M(p).J.v)}</div>`).join('')}</div>`}).join('')}</div></div>`;
+
+V.data=()=>`<div class="grid g2"><div class="card"><h3>🔌 Free data pipeline</h3><p class="mut" style="margin-top:-6px">The collector (Python, run every day for free by GitHub Actions) writes <span class="mono">products.json</span>. Import that file here.</p>
+ ${[['Google Trends: 11 countries + worldwide','pytrends','Live'],['Reddit product communities','public JSON','Live'],['Meta Ad Library (worldwide + 🇹🇳)','free API token','Token'],['Amazon best-seller lists (10 storefronts)','HTML, check ToS','Optional'],['TikTok Creative Center','deep links','Manual'],['1688 / AliExpress / Alibaba','search deep links','In app'],['China signal','Google is blocked in China, so worldwide + 1688 are used as a proxy','Proxy']].map(r=>`<div class="r2"><span>${r[0]}<br><small class="mut">${r[1]}</small></span><span class="chip ${r[2]==='Live'?'v-GO':'v-WATCH'}">${r[2]}</span></div>`).join('')}</div>
+ <div class="card"><h3>📥 Import / export</h3><div class="fg"><label class="f">Import products.json (from the collector or your own research)</label><input type="file" id="imp" accept=".json,application/json"></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="clr">Remove imported</button><button class="btn" id="hidedemo">${hasDemo()?'Hide demo data':'Show demo data'}</button><button class="btn" id="cpy">Copy dataset JSON</button></div>
+ <h3 style="margin-top:18px">Schema</h3><pre class="out mono" style="font-size:11.5px">[{"name":"…","cat":"Kitchen","icon":"🍱","cost":8.5,"ship":4.8,"kg":1.1,
+ "tnd":99,"ads":236,"adDays":61,"stores":95,"tnSellers":2,"fragile":false,
+ "restricted":false,"seasons":[11,12,1],"origin":"KR",
+ "trend":{"US":[16 weekly 0-100],"UK":[…],"DE":[…],"FR":[…],"ES":[…],"IT":[…],
+          "CN":[…],"JP":[…],"KR":[…],"TR":[…],"AE":[…],"BR":[…]},
+ "hooks":["…"]}]</pre></div></div>`;
+
+V.config=()=>{const f=(k,l,st=1)=>`<div class="fg"><label class="f">${l}</label><input type="number" step="${st}" data-s="${k}" value="${S[k]}"></div>`,c=(k,l)=>`<div class="fg"><label class="f">${l}</label><input type="number" data-c="${k}" value="${S.c[k]}"></div>`;
+ const wl={vel:'Global momentum',mar:'Profit margin',sat:'Low saturation',fit:'Tunisia fit (price & season)',log:'Logistics ease',wave:'Wave timing'};
+ return `<div class="grid g3"><div class="card"><h3>✅ Success criteria thresholds</h3><div class="grid g2">${c('margin','Target net margin %')}${c('marginW','Min acceptable margin %')}${c('profit','Target profit/order (TND)')}${c('profitW','Min profit/order (TND)')}${c('pMin','Price sweet spot min (TND)')}${c('pMax','Price sweet spot max (TND)')}${c('vel','Min momentum (0–100)')}${c('breadth','Min markets rising')}${c('tnMax','Ideal max TN sellers')}${c('tnW','Saturated above (sellers)')}${c('adDays','Proven ad run (days)')}${c('kg','Max weight (kg)')}</div></div>
+ <div class="card"><h3>💱 Tunisia cost assumptions</h3><p class="mut" style="font-size:12px;margin-top:-6px">These are estimates. Check the exchange rate, the customs duty for your product's HS code, and your courier's fees.</p><div class="grid g2">${f('usd','USD → TND',.01)}${f('duty','Customs duty %')}${f('vat','VAT %')}${f('tax','Other import taxes %')}${f('deliv','Delivery fee (TND)')}${f('retFee','Return fee (TND)')}${f('ret','COD return rate %')}${f('conf','Confirmation rate %')}${f('cpa','Ad spend per order (TND)')}</div></div>
+ <div class="card"><h3>⚖️ Winning Score weights</h3>${Object.entries(wl).map(([k,l])=>`<div class="fg"><label class="f">${l}: <b id="wv_${k}" style="color:var(--txt)">${S.w[k]}</b></label><input type="range" min="0" max="50" data-w="${k}" value="${S.w[k]}" style="width:100%"></div>`).join('')}<button class="btn" id="rst">Reset all defaults</button></div>
+ <div class="card"><h3>🤖 AI (free)</h3><p class="mut" style="font-size:12px;margin-top:-6px">Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a>. It is saved only in this browser. Don't share screenshots of it.</p><div class="fg"><label class="f">Gemini API key</label><input type="text" id="gk" value="${esc(GK.key)}" placeholder="AIza…"></div><div class="fg"><label class="f">Model</label><input type="text" id="gm" value="${esc(GK.model)}"></div><button class="btn pri" id="gsave">Save AI settings</button></div></div>`};
+
+// ================= Product detail =================
+let TAB='verdict',DM=null;
+function openP(id){const p=DB.find(x=>x.id===id);if(!p)return;const m=M(p),J=m.J;CUR=id;
+ if(!DM||DM.id!==id){const top=MK.map(k=>k[0]).sort((a,b)=>m.g[b]-m.g[a]).slice(0,3);DM={id,on:[...new Set(['CN','US',...top])]}}
+ const parts=[['Momentum',m.vel,S.w.vel],['Margin',m.mar,S.w.mar],['Low saturation',100-m.sat,S.w.sat],['Tunisia fit',m.fit,S.w.fit],['Logistics',m.log,S.w.log],['Wave timing',m.W.ws,S.w.wave]];
+ const vcol=`var(--${J.v.toLowerCase()})`;
+ const body={
+ verdict:`<div class="verdict" style="border-color:${vcol};background:linear-gradient(90deg,color-mix(in srgb,${vcol} 14%,transparent),transparent)"><div style="font-size:44px">${VC[J.v][0]}</div><div style="flex:1"><div class="big" style="color:${vcol}">${J.v} · ${VC[J.v][1]}</div><div>${J.txt}</div></div><div style="text-align:center">${ring(Math.round(J.pts/J.max*100),64)}<div class="mut" style="font-size:11px">criteria ${J.pts}/${J.max}</div></div></div>
+  <div class="grid" style="grid-template-columns:1.5fr 1fr;margin-top:14px"><div class="card"><h3>✅ Success criteria</h3>${J.R.map(r=>`<div class="crit"><div class="dot d-${r.st}">${r.st==='p'?'✓':r.st==='w'?'!':'✕'}</div><div><b>${r.name}</b>${r.hard?' <span class="chip v-AVOID" style="font-size:10px">must-have</span>':''}<br><small class="mut">${r.why}</small></div><b class="mono" style="font-size:12.5px;text-align:right">${r.val}</b></div>`).join('')}</div>
+  <div class="grid" style="align-content:start"><div class="card"><h3>🎯 Recommended action</h3><div>${J.action}</div></div><div class="card"><h3>📊 Data confidence</h3>${bar(J.conf,'var(--acc2)')}<div class="mut" style="font-size:12px;margin-top:6px">${J.conf}%. Source: ${p.source}. ${p.source==='demo'?'These are demo numbers, check them with real data.':p.source==='ai'?'These are AI estimates. Check them in the Meta Ad Library and on 1688.':'Based on collected signals.'}</div></div>
+  <div class="card"><h3>🧠 AI second opinion</h3><button class="btn pri sm" id="j2" data-p="${p.id}">Ask Claude to judge this product</button><pre class="out" id="j2o" style="margin-top:10px;display:none"></pre></div></div></div>`,
+ overview:`<div class="legend" style="margin-bottom:8px">${MK.map(k=>`<span class="mchip ${DM.on.includes(k[0])?'on':''}" style="--c:${k[3]}" data-dm="${k[0]}">${k[2]} ${k[0]} <span class="${m.g[k[0]]>=0?'up':'down'}">${pct(m.g[k[0]])}</span></span>`).join('')}</div>${lines(p.trend,DM.on)}
+  <div class="grid" style="grid-template-columns:1fr 1.2fr;margin-top:12px"><div class="card"><h3>Winning Score breakdown</h3>${parts.map(([l,v,w])=>`<div style="margin-bottom:9px"><div class="r2" style="border:0;padding:0 0 3px"><span>${l} <span class="mut">×${w}</span></span><b>${Math.round(v)}</b></div>${bar(v)}</div>`).join('')}</div>
+  <div class="grid g2" style="align-content:start">${[['Active ads',p.ads],['Longest ad run',p.adDays+' d'],['Stores selling',p.stores],['TN sellers',p.tnSellers],['Markets rising',m.breadth+'/12'],['Wave ETA',m.W.eta]].map(([l,v])=>`<div class="card kpi"><div class="l">${l}</div><div class="v" style="font-size:${String(v).length>8?'15px':'24px'}">${v}</div></div>`).join('')}</div></div>`,
+ markets:`<table><tr><th>Market</th><th>Now</th><th>4-wk growth</th><th>16-week trend</th><th>Status</th><th>Research</th></tr>${MK.map(k=>{const a=p.trend[k[0]];return `<tr><td>${k[2]} ${k[1]}</td><td class="mono">${a.at(-1)}</td><td class="${m.g[k[0]]>=0?'up':'down'}"><b>${pct(m.g[k[0]])}</b></td><td>${spark(a,k[3],120,28)}</td><td>${peaked(a)?'<span class="chip st-Declining">Past peak</span>':tookOff(a)?'<span class="chip st-Emerging">Took off</span>':'<span class="chip" style="background:var(--panel2)">Quiet</span>'}</td><td>${k[5]?`<a target="_blank" href="https://www.${k[5]}/s?k=${encodeURIComponent(p.name)}">Amazon ↗</a>`:k[0]==='CN'?`<a target="_blank" href="${p.suppliers[0].url}">1688 ↗</a>`:`<a target="_blank" href="https://www.coupang.com/np/search?q=${encodeURIComponent(p.name)}">Coupang ↗</a>`} · <a target="_blank" href="https://trends.google.com/trends/explore?geo=${k[0]==='UK'?'GB':k[0]==='CN'?'':k[0]}&q=${encodeURIComponent(p.name)}">Trends ↗</a></td></tr>`}).join('')}</table>`,
+ profit:(()=>{const L=m.L;return `<div class="grid g2"><div>${[['Supplier + shipping','$'+(p.cost+p.ship).toFixed(2)],['Landed unit cost',tnd(L.unit)],['Delivery',tnd(L.deliv)],['Ad spend / delivered order',tnd(L.cpa)],['Return losses',tnd(L.retLoss)],['Break-even price',tnd(L.breakeven)],['Selling price',tnd(p.tnd)]].map(r=>`<div class="r2"><span>${r[0]}</span><b class="mono">${r[1]}</b></div>`).join('')}</div>
+  <div><div class="card kpi"><div class="l">Net profit per delivered order</div><div class="v ${L.profit>0?'up':'down'}">${tnd(L.profit)}</div><div class="d">${Math.round(L.margin*100)}% margin · ${L.mult.toFixed(1)}× markup</div></div><p class="mut" style="font-size:12px">${p.kg} kg${p.fragile?' · fragile':''}${p.restricted?' · ⚠️ may need import authorization in Tunisia':''}</p><button class="btn" data-calc="${p.id}">Open in Profit Lab →</button></div></div>`})(),
+ source:`${p.suppliers.map(s=>`<div class="r2"><span>🏭 ${s.name}</span><a target="_blank" href="${s.url}">Open ↗</a></div>`).join('')}<div class="r2"><span>🇹🇳 Tunisian competitors (Meta Ad Library, TN)</span><a target="_blank" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TN&q=${encodeURIComponent(p.name)}">Open ↗</a></div><div class="r2"><span>🎬 TikTok top ads</span><a target="_blank" href="https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?keyword=${encodeURIComponent(p.name)}">Open ↗</a></div><div class="r2"><span>📈 Google Trends, worldwide</span><a target="_blank" href="https://trends.google.com/trends/explore?date=today%203-m&q=${encodeURIComponent(p.name)}">Open ↗</a></div><div class="r2"><span>🇹🇳 Google Trends, Tunisia</span><a target="_blank" href="https://trends.google.com/trends/explore?geo=TN&q=${encodeURIComponent(p.name)}">Open ↗</a></div>`,
+ ai:`<div class="filters"><select id="alang"><option>Tunisian Darija (Latin script)</option><option>Tunisian Darija (Arabic script)</option><option>French</option><option>Darija + French mix</option></select><select id="atype"><option>15s TikTok/Reels script + 5 hooks</option><option>Facebook ad copy (3 variants)</option><option>Product page (title, bullets, FAQ, offer)</option><option>Full launch plan (angles, offer, test budget)</option></select><button class="btn pri" id="ago" data-p="${p.id}">Generate</button></div><pre class="out" id="aout">Pick options, then click Generate.</pre>`,
+ notes:`<textarea id="note" data-p="${p.id}" style="width:100%;min-height:220px" placeholder="Supplier quotes, test results, competitor notes… (saved in this browser)">${esc(NOTES[p.id]||'')}</textarea>`}[TAB];
+ document.getElementById('mbox').innerHTML=`<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="pimg" style="width:60px;height:60px;font-size:34px">${p.icon}</div><div style="flex:1;min-width:200px"><h2 style="margin:0;letter-spacing:-.02em">${p.name}</h2><div class="mut" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px">${p.cat} · ${MC[p.origin]?.[2]} ${MC[p.origin]?.[1]} origin · source: ${p.source} ${vchip(J.v)}<span class="chip st-${m.stage}">${m.stage}</span></div></div>
+ ${star(p.id)}<span class="btn sm" data-addcmp="${p.id}">⇆ ${CMP.includes(p.id)?'In compare':'Compare'}</span>${ring(m.score,56)}<button class="btn" id="mx">✕</button></div>
+ <div class="tabs">${[['verdict','⚖️ Verdict'],['overview','Overview'],['markets','🌍 Markets'],['profit','Profit (TND)'],['source','Sourcing'],['ai','✍️ AI creatives'],['notes','Notes']].map(([k,l])=>`<button data-tab="${k}" data-p="${p.id}" class="${TAB===k?'on':''}">${l}</button>`).join('')}</div>${body}`;
+ document.getElementById('modal').classList.add('on')}
+let CUR=null;
+
+// ================= AI =================
+let AI=null;(async()=>{try{if(window.claude?.use)AI=await claude.use('sample')}catch(e){}})();
+const brief=p=>{const m=M(p);return {name:p.name,cat:p.cat,price_tnd:p.tnd,score:m.score,verdict:m.J.v,stage:m.stage,profit_tnd:Math.round(m.L.profit),margin_pct:Math.round(m.L.margin*100),tn_sellers:p.tnSellers,markets_rising:m.breadth,wave_eta:m.W.eta,top_growth:Object.entries(m.g).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k,v])=>k+' '+pct(v)).join(', '),seasons:p.seasons||'evergreen',failed:m.J.R.filter(r=>r.st==='f').map(r=>r.name)}};
+let GK=load('pk_ai',{key:'',model:'gemini-2.5-flash'});
+async function gemini(input,json){const contents=(Array.isArray(input)?input:[{role:'user',content:input}]).map(m=>({role:m.role==='assistant'?'model':'user',parts:[{text:m.content}]}));
+ const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GK.model)}:generateContent?key=${encodeURIComponent(GK.key)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents,generationConfig:json?{responseMimeType:'application/json'}:{}})});
+ const d=await r.json();if(!r.ok)throw {message:d.error?.message||('HTTP '+r.status),code:r.status===429?'rate_limited':''};return (d.candidates?.[0]?.content?.parts||[]).map(x=>x.text).join('')}
+async function ask(prompt,el,opt={}){
+ if(!AI&&!GK.key){el.innerHTML='AI features need a free Google Gemini API key. Add it in <a href="#config">Criteria & Costs → AI</a>.';return null}
+ try{if(!AI){el.textContent='Thinking…';let input=prompt;
+   if(opt.tools){const ctx='PeeK dataset (top products by score): '+JSON.stringify(DB.slice().sort((a,b)=>M(b).score-M(a).score).slice(0,40).map(brief))+'\n\n';input=prompt.map((m,i)=>i===0?{...m,content:ctx+m.content}:m)}
+   let t=await gemini(input,opt.json);if(opt.json){t=t.replace(/^```(json)?|```$/g,'').trim();return JSON.parse(t)}el.textContent=t;return t}
+  if(opt.json){el.textContent='Thinking…';return await AI.json(prompt)}const r=await AI(prompt,{onText:({text})=>{el.textContent=text},...(opt.tools?{tools:opt.tools}:{})});el.textContent=r.text;return r.text}
+ catch(e){el.textContent=e.code==='rate_limited'?'Rate limited. Wait a minute and try again.':e.code==='not_granted'?'AI access was not granted.':'AI error: '+(e.message||e);return null}}
+const TOOLS=[{name:'search_products',description:'Search the PeeK dataset. Returns products with score, verdict, profit, saturation and wave info.',inputSchema:{type:'object',properties:{query:{type:'string'},category:{type:'string'},verdict:{type:'string',enum:['GO','TEST','WATCH','AVOID']},min_score:{type:'number'},month:{type:'number',description:'1-12 season month'},limit:{type:'number'}}},
+ execute:i=>DB.filter(p=>{const m=M(p);return (!i.query||p.name.toLowerCase().includes(i.query.toLowerCase()))&&(!i.category||p.cat.toLowerCase()===i.category.toLowerCase())&&(!i.verdict||m.J.v===i.verdict)&&(!i.min_score||m.score>=i.min_score)&&(!i.month||(p.seasons&&p.seasons.includes(i.month)))}).sort((a,b)=>M(b).score-M(a).score).slice(0,i.limit||10).map(brief)},
+ {name:'list_categories',description:'List categories with product counts and average score.',inputSchema:{type:'object',properties:{}},execute:()=>{const c={};DB.forEach(p=>{(c[p.cat]=c[p.cat]||[]).push(M(p).score)});return Object.entries(c).map(([k,a])=>({category:k,count:a.length,avg_score:Math.round(avg(a))}))}}];
+
+// ================= Router & events =================
+const TITLES={dashboard:['Dashboard','Global winners, judged for the Tunisian market'],explorer:['Product Explorer','Filter, sort, score and judge every candidate'],verdicts:['Verdict Board','Every product judged against your success criteria'],heatmap:['Global Heatmap','Growth across 12 source markets'],waves:['Wave Tracker','Catch the trend before it reaches Tunisia'],map:['Opportunity Map','Find the sweet spot'],ads:['Ad Intelligence','Proven hooks and long-running creatives'],studio:['AI Studio','Scout, analyse and create with Claude'],profit:['Profit Lab','Real COD profit in TND'],seasons:['Season Planner','Tunisian demand calendar'],pipeline:['Pipeline','Track products from idea to scaling'],compare:['Compare','Side-by-side comparison'],alerts:['Alerts','Rules that flag opportunities automatically'],data:['Data Sources','Free pipeline, import and export'],config:['Criteria & Costs','Tune the judgement engine']};
+function renderNav(){const g=DB.filter(p=>M(p).J.v==='GO').length,al=ALR.list.reduce((s,r)=>s+alertMatch(r).length,0),pl=Object.keys(PL).length,cur=(location.hash||'#dashboard').slice(1);
+ document.getElementById('nav').innerHTML=NAV.map(n=>n.length===1?`<div class="sec">${n[0]}</div>`:`<a href="#${n[0]}" class="${cur===n[0]?'on':''}">${ic(n[2])}${n[1]}${n[0]==='verdicts'&&g?`<span class="nb g">${g} GO</span>`:n[0]==='alerts'&&al?`<span class="nb">${al}</span>`:n[0]==='pipeline'&&pl?`<span class="nb" style="background:var(--acc2)">${pl}</span>`:n[0]==='compare'&&CMP.length?`<span class="nb" style="background:var(--acc2)">${CMP.length}</span>`:''}</a>`).join('')}
+function route(){let v=(location.hash||'#dashboard').slice(1);if(!V[v])v='dashboard';renderNav();
+ document.getElementById('main').innerHTML=`<div class="top"><div><h1>${TITLES[v][0]}</h1><div class="sub">${TITLES[v][1]}</div></div><span class="sp"></span><div class="srch" id="opal">${ic('search').replace('<svg','<svg width="16" height="16"')} Search products… <span class="sp"></span><span class="kbd">Ctrl K</span></div><div class="tn">🇹🇳 Tunisia · TND</div></div>`+V[v]()}
+window.addEventListener('hashchange',()=>{document.getElementById('modal').classList.remove('on');route()});
+function rerenderModal(){if(document.getElementById('modal').classList.contains('on')&&CUR)openP(CUR)}
+function setPL(id,st){if(st)PL[id]=st;else delete PL[id];save('pk_pipe',PL)}
+document.addEventListener('click',async e=>{const t=e.target,cl=s=>t.closest(s);
+ if(cl('[data-star]')){e.stopPropagation();const id=cl('[data-star]').dataset.star;setPL(id,PL[id]?null:'Watching');toast(PL[id]?'Added to pipeline':'Removed from pipeline');route();rerenderModal();return}
+ if(t.matches('[data-cmp]')){e.stopPropagation();const id=t.dataset.cmp;CMP=t.checked?[...CMP,id].slice(-4):CMP.filter(x=>x!==id);route();return}
+ if(cl('[data-addcmp]')){const id=cl('[data-addcmp]').dataset.addcmp;if(!CMP.includes(id))CMP=[...CMP,id].slice(-4);toast('Added to compare');renderNav();rerenderModal();return}
+ if(cl('[data-uncmp]')){CMP=CMP.filter(x=>x!==cl('[data-uncmp]').dataset.uncmp);route();return}
+ if(cl('#opal')){openPal();return}
+ if(cl('.pal .it')){const it=cl('.pal .it');closePal();if(it.dataset.go)location.hash=it.dataset.go;else{TAB='verdict';openP(it.dataset.pid)}return}
+ if(t.id==='pal')return closePal();
+ const o=cl('[data-open]');if(o&&!cl('a')&&!cl('select')&&!cl('input')){TAB='verdict';DM=null;openP(o.dataset.open);return}
+ if(t.id==='mx'||t.id==='modal'){document.getElementById('modal').classList.remove('on');CUR=null;return}
+ if(t.dataset.tab){TAB=t.dataset.tab;openP(t.dataset.p);return}
+ if(cl('[data-dm]')){const k=cl('[data-dm]').dataset.dm;DM.on=DM.on.includes(k)?DM.on.filter(x=>x!==k):[...DM.on,k];if(!DM.on.length)DM.on=[k];openP(CUR);return}
+ if(t.dataset.calc){CALC={id:t.dataset.calc};location.hash='profit';return}
+ if(t.dataset.sort){F.dir=F.sort===t.dataset.sort?-F.dir:-1;F.sort=t.dataset.sort;route();return}
+ if(t.dataset.fv){F.view=t.dataset.fv;route();return}
+ if(t.dataset.stu){STU.tab=t.dataset.stu;route();return}
+ if(t.id==='theme'){const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('pk_theme',n)}catch(e){}return}
+ if(t.id==='ago'||t.id==='ggo'){const g=t.id==='ggo',p=DB.find(x=>x.id===(g?document.getElementById('gp').value:t.dataset.p));const lang=document.getElementById(g?'glang':'alang').value,type=document.getElementById(g?'gtype':'atype').value;
+  ask(`You are a top e-commerce creative strategist for Tunisia (cash on delivery, Facebook/Instagram/TikTok, prices in TND). Product: "${p.name}" (${p.cat}), selling price ${p.tnd} TND. Hooks that work abroad: ${p.hooks.join('; ')}. Product data: ${JSON.stringify(brief(p))}. Write: ${type}. Language: ${lang}. Make it culturally relevant to Tunisians, mention cash on delivery and fast delivery across Tunisia, and create urgency without false claims. Use plain text with short headings.`,document.getElementById(g?'gout':'aout'));return}
+ if(t.id==='j2'){const p=DB.find(x=>x.id===t.dataset.p),o=document.getElementById('j2o');o.style.display='block';
+  ask(`You are a seasoned Tunisian e-commerce (COD) product analyst. Judge this product for the Tunisian market strictly and honestly. Data from PeeK (some values may be estimates): ${JSON.stringify(brief(p))}, supplier cost $${p.cost}+$${p.ship} shipping, weight ${p.kg}kg, ${p.ads} active ads worldwide, longest ad ${p.adDays} days. Criteria results: ${JSON.stringify(M(p).J.R.map(r=>[r.name,r.st,r.val]))}. Give: 1) Your verdict (GO/TEST/WATCH/AVOID) and whether you agree with PeeK's ${M(p).J.v}; 2) Three strengths and three risks specific to Tunisia (purchasing power, culture, COD returns, customs, competition); 3) The best marketing angle for Tunisians; 4) A concrete 7-day test plan with budget in TND. Keep it under 250 words, plain text.`,o);return}
+ if(t.id==='sgo'){const q=document.getElementById('sq').value||'any category',mk=document.getElementById('smk').value||'USA, Europe and China',b=document.getElementById('sb').value||'any price';STU.q=q;STU.status='Scouting…';const out=document.getElementById('sout');
+  const r=await ask(`You are an e-commerce product researcher. Suggest 6 physical products in the niche "${q}" (price: ${b}) that are currently trending or rising in ${mk} and that are likely to sell well in Tunisia through cash-on-delivery social ads. Exclude products restricted from import into Tunisia (drones, radio transmitters, weapons, medicines, e-cigarettes). Return ONLY a JSON array of objects with keys: name, cat, icon (one emoji), cost (est. USD supplier unit cost), ship (est. USD shipping per unit), kg, tnd (suggested Tunisian price), seasons (array of months 1-12, or [] if evergreen), origin (one of US,UK,DE,FR,ES,IT,CN,JP,KR,TR,AE,BR), momentum (-1..1), saturation (0-100), tnSellers (estimated competing Tunisian pages), why (1 sentence), hooks (2 short ad hooks).`,out,{json:true});
+  if(Array.isArray(r)){STU.items=r;STU.status=`${r.length} AI-suggested candidates. These are model estimates, so check them before buying stock.`}else if(r)STU.status='Unexpected response. Try again.';else STU.status=out.textContent;
+  if(location.hash==='#studio')route();return}
+ if(t.dataset.addsc!=null){const x=STU.items[+t.dataset.addsc];const sat=x.saturation??40;const p=normalize({...x,source:'ai',ads:Math.round(sat*5),adDays:Math.round(10+sat/3),stores:Math.round(sat*3),seasons:x.seasons?.length?x.seasons:0});addImported([p]);x._added=1;toast('Added and judged: '+M(p).J.v);route();return}
+ if(t.id==='cgo'||t.id==='cclr'){if(t.id==='cclr'){STU.chat=[];route();return}const q=document.getElementById('cq').value.trim();if(!q)return;STU.chat.push({role:'user',content:q});route();
+  const box=document.getElementById('chat');const el=document.createElement('div');el.className='msg a';el.textContent='Thinking…';box.appendChild(el);box.scrollTop=1e9;
+  const sys=`You are PeeK's AI analyst helping a Tunisian e-commerce seller (COD, prices in TND) pick winning products. Use the tools to look up the dataset before answering. Be concise and concrete. Note that the dataset may contain demo or estimated values.\n\nUser: `;
+  const msgs=STU.chat.map((m,i)=>i===0?{...m,content:sys+m.content}:m);const txt=await ask(msgs,el,{tools:TOOLS});if(txt)STU.chat.push({role:'assistant',content:txt});return}
+ if(t.id==='aadd'){const g=id=>document.getElementById(id).value;ALR.list.push({n:g('an')||'Untitled rule',score:+g('as')||0,tn:g('at')===''?'':+g('at'),verdict:g('av'),stage:g('ast'),mkt:g('am'),g:+g('ag')||10});save('pk_alerts',ALR);route();toast('Alert rule created');return}
+ if(t.dataset.adel!=null){ALR.list.splice(+t.dataset.adel,1);save('pk_alerts',ALR);route();return}
+ if(t.id==='clr'){try{localStorage.removeItem('pk_import')}catch(e){}DB=DB.filter(p=>p.source==='demo');toast('Imported data removed');route();return}
+ if(t.id==='hidedemo'){if(hasDemo())DB=DB.filter(p=>p.source!=='demo');else{location.reload();return}route();return}
+ if(t.id==='cpy'){try{await navigator.clipboard.writeText(JSON.stringify(DB.map(({_m,...p})=>p),null,1));toast('Copied to clipboard')}catch(e){toast('The browser blocked copying')}return}
+ if(t.id==='gsave'){GK={key:document.getElementById('gk').value.trim(),model:document.getElementById('gm').value.trim()||'gemini-2.5-flash'};save('pk_ai',GK);toast('AI settings saved');return}
+ if(t.id==='rst'){S=structuredClone(DEF);save('pk_cfg',S);resetM();route();toast('Defaults restored');return}
+});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPal()}if(e.key==='Escape'){closePal();document.getElementById('modal').classList.remove('on')}
+ if(e.key==='Enter'&&e.target.id==='cq')document.getElementById('cgo').click();if(e.key==='Enter'&&e.target.id==='palq'){const f=document.querySelector('.pal .it');if(f)f.click()}});
+function openPal(){document.getElementById('pal').classList.add('on');const i=document.getElementById('palq');i.value='';palList('');setTimeout(()=>i.focus(),20)}
+function closePal(){document.getElementById('pal').classList.remove('on')}
+function palList(q){q=q.toLowerCase();const pages=Object.entries(TITLES).filter(([k,v])=>v[0].toLowerCase().includes(q)).slice(0,5).map(([k,v])=>`<div class="it" data-go="${k}">↪ <b>${v[0]}</b><span class="mut">${v[1]}</span></div>`);
+ const ps=DB.filter(p=>p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)).slice(0,8).map(p=>`<div class="it" data-pid="${p.id}">${p.icon} <b>${p.name}</b><span class="sp"></span>${vchip(M(p).J.v)}</div>`);
+ document.getElementById('pall').innerHTML=[...ps,...pages].join('')||'<div class="it mut">No results</div>'}
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.id==='palq')return palList(t.value);
+ if(t.id==='fq'){F.q=t.value;const pos=t.selectionStart;route();const n=document.getElementById('fq');n.focus();n.setSelectionRange(pos,pos);return}
+ if(t.dataset.s){S[t.dataset.s]=+t.value;save('pk_cfg',S);resetM();renderNav();return}
+ if(t.dataset.c){S.c[t.dataset.c]=+t.value;save('pk_cfg',S);resetM();renderNav();return}
+ if(t.dataset.w){S.w[t.dataset.w]=+t.value;document.getElementById('wv_'+t.dataset.w).textContent=t.value;save('pk_cfg',S);resetM();return}
+ if(t.id==='cpr'){CALC.price=+t.value;route();return}
+ if(t.id==='cc'||t.id==='cs'){const p=DB.find(x=>x.id===CALC.id)||DB[0];CALC.id=p.id;p[t.id==='cc'?'cost':'ship']=+t.value;delete p._m;const id=t.id;route();document.getElementById(id).focus();return}
+ if(t.id==='note'){NOTES[t.dataset.p]=t.value;save('pk_notes',NOTES);return}
+});
+document.addEventListener('change',e=>{const t=e.target;const map={fcat:'cat',fst:'stage',fver:'verdict',fmk:'mkt',fmax:'maxP',fmin:'minS'};
+ if(map[t.id]){F[map[t.id]]=t.id==='fmin'?+t.value:t.value;route();return}if(t.id==='fnr'){F.noRestr=t.checked;route();return}if(t.id==='flt'){F.lowTN=t.checked;route();return}
+ if(t.id==='cp'){CALC={id:t.value};route();return}
+ if(t.dataset.mv){setPL(t.dataset.mv,t.value);route();return}
+ if(t.id==='imp'&&t.files[0]){t.files[0].text().then(s=>{try{const a=JSON.parse(s);const arr=(Array.isArray(a)?a:a.products||[]).map(x=>normalize({source:'collector',...x}));addImported(arr);toast(arr.length+' products imported and judged');route()}catch(err){toast('Invalid JSON file')}})}});
+document.addEventListener('dragstart',e=>{const d=e.target.closest?.('[data-drag]');if(d)e.dataTransfer.setData('text/plain',d.dataset.drag)});
+document.addEventListener('dragover',e=>{const c=e.target.closest?.('[data-col]');if(c){e.preventDefault();c.classList.add('over')}});
+document.addEventListener('dragleave',e=>{const c=e.target.closest?.('[data-col]');if(c)c.classList.remove('over')});
+document.addEventListener('drop',e=>{const c=e.target.closest?.('[data-col]');if(c){e.preventDefault();setPL(e.dataTransfer.getData('text/plain'),c.dataset.col);route()}});
+function normalize(x){const legacy={US:x.trend?.us,UK:x.trend?.us,DE:x.trend?.eu,FR:x.trend?.eu,ES:x.trend?.eu,IT:x.trend?.eu,CN:x.trend?.cn};
+ const origin=MC[x.origin]?x.origin:'US',mom=x.momentum??x.usG??.4,gen=genTrend(origin,mom<-.1?'d':mom>.6?'r':mom>.2?'r':'e',mom>.6?9:6,Math.floor(Math.random()*1e4)),trend={};
+ MK.forEach(([c])=>{const a=x.trend?.[c]||legacy[c];trend[c]=Array.isArray(a)&&a.length>=8?a.map(Number):gen[c]});
+ return mk({id:x.id||'i'+Math.random().toString(36).slice(2,9),name:x.name||'Unnamed',cat:x.cat||'Other',icon:x.icon||'📦',cost:+x.cost||5,ship:+x.ship||3,kg:+x.kg||.5,tnd:+x.tnd||79,ads:+(x.ads??0),adDays:+(x.adDays??0),stores:+(x.stores??50),tnSellers:+(x.tnSellers??0),fragile:!!x.fragile,restricted:!!x.restricted,seasons:Array.isArray(x.seasons)&&x.seasons.length&&x.seasons.length<12?x.seasons:0,origin,trend,hooks:x.hooks||[],source:x.source||'import'})}
+function addImported(arr){DB=DB.concat(arr);try{const cur=JSON.parse(localStorage.getItem('pk_import')||'[]');localStorage.setItem('pk_import',JSON.stringify(cur.concat(arr.map(({_m,suppliers,...p})=>p))))}catch(e){}}
+route();
+fetch('products.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(a=>{const arr=(Array.isArray(a)?a:a?.products||[]);if(!arr.length)return;
+ DB=DB.filter(p=>p.source!=='demo').concat(arr.map(x=>normalize({source:'collector',...x})));LIVE=arr.length;resetM();route();toast(arr.length+' live products loaded')}).catch(()=>{});
+</script>
+</body>
+</html>
