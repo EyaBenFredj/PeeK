@@ -1,98 +1,125 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PeeK — Winning Product Intelligence for Tunisia</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--r:14px;--acc:#ff3d6e;--acc2:#7b61ff;--ok:#1fd17a;--warn:#ffb020;--bad:#ff4d4f;--go:#1fd17a;--test:#4f9dff;--watch:#ffb020;--avoid:#ff4d4f}
-[data-theme=dark]{--bg:#07090f;--bg2:#0c1019;--panel:#111622;--panel2:#171d2c;--line:#222a3d;--line2:#2d3750;--txt:#eef1f8;--mut:#8792ab;--mut2:#5b6680;--glow:rgba(123,97,255,.14)}
-[data-theme=light]{--bg:#f4f6fb;--bg2:#ffffff;--panel:#ffffff;--panel2:#f1f3f9;--line:#e3e7f0;--line2:#d3d9e6;--txt:#121826;--mut:#5d6880;--mut2:#8a94aa;--glow:rgba(123,97,255,.08)}
-*{box-sizing:border-box}html,body{margin:0}body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.45}
-body:before{content:"";position:fixed;inset:-20% 40% auto -10%;height:60vh;background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none;z-index:0}
-a{color:var(--acc2);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit;color:inherit}
-.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh;position:relative;z-index:1}
-aside{background:var(--bg2);border-right:1px solid var(--line);padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
-.logo{display:flex;align-items:center;gap:10px;padding:2px 10px 6px}.logo .mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;box-shadow:0 6px 22px -6px var(--acc)}
-.logo b{font-size:22px;font-weight:800;letter-spacing:-.02em}.logo b span{color:var(--acc)}
-.tag{font-size:11.5px;color:var(--mut);padding:0 10px 14px}
-.nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;margin-bottom:1px;text-decoration:none}
-.nav a svg{width:18px;height:18px;flex:none}.nav a:hover{background:var(--panel2);color:var(--txt)}
-.nav a.on{background:linear-gradient(90deg,rgba(255,61,110,.14),transparent);color:var(--txt);box-shadow:inset 3px 0 0 var(--acc)}
-.nav .sec{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut2);margin:16px 10px 6px;font-weight:700}
-.nb{margin-left:auto;background:var(--acc);color:#fff;border-radius:20px;font-size:10.5px;padding:1px 7px;font-weight:700}.nb.g{background:var(--go)}
-.foot{margin-top:auto;padding:12px 10px 0;font-size:11.5px;color:var(--mut2)}
-main{padding:20px 30px 70px;min-width:0}
-.top{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
-.top h1{font-size:24px;margin:0;font-weight:800;letter-spacing:-.02em}.top .sub{color:var(--mut);font-size:13px}
-.sp{flex:1}.kbd{font-family:"JetBrains Mono";font-size:11px;border:1px solid var(--line2);border-radius:5px;padding:1px 5px;color:var(--mut)}
-.srch{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 12px;cursor:pointer;color:var(--mut);min-width:240px}
-.tn{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-weight:600}
-.demo{background:linear-gradient(90deg,rgba(255,176,32,.12),rgba(255,176,32,.03));border:1px solid rgba(255,176,32,.35);color:var(--warn);padding:9px 14px;border-radius:12px;font-size:12.5px;margin-bottom:18px}
-.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+:root{--r:16px;--r-sm:10px;--blue:#2b3bff;--blue2:#5864ff;--acc:#2b3bff;--acc2:#2b3bff;--ok:#0b9f63;--warn:#d98a00;--bad:#e5383b;--go:#0b9f63;--test:#2b3bff;--watch:#d98a00;--avoid:#e5383b;--tag:#fffdf6}
+[data-theme=light]{--bg:#eceef3;--bg2:#f6f7fa;--panel:#ffffff;--panel2:#f1f2f6;--line:#e1e4ec;--line2:#cfd4e0;--txt:#12141c;--mut:#5a6175;--mut2:#8b91a3;--glow:rgba(43,59,255,.12);--shadow:0 1px 0 rgba(18,20,28,.04),0 8px 24px -16px rgba(18,20,28,.25)}
+[data-theme=dark]{--bg:#0d0f15;--bg2:#12151d;--panel:#171b25;--panel2:#1e2330;--line:#272d3b;--line2:#343c4e;--txt:#eef0f6;--mut:#9aa1b4;--mut2:#6b7286;--glow:rgba(88,100,255,.22);--blue:#6f79ff;--acc:#6f79ff;--acc2:#6f79ff;--test:#6f79ff;--tag:#1d2130;--shadow:0 10px 30px -18px rgba(0,0,0,.8)}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:"Geist",system-ui,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.5;font-feature-settings:"tnum" 1}
+h1,h2,h3,.kpi .v,.logo b,.big{font-family:"Bricolage Grotesque","Geist",sans-serif}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.app{display:grid;grid-template-columns:236px 1fr;min-height:100vh}
+aside{background:var(--panel);border-right:1px solid var(--line);padding:20px 14px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
+.logo{display:flex;align-items:center;gap:10px;padding:0 8px 4px}.logo .mark{width:34px;height:34px;border-radius:10px;background:var(--txt);display:grid;place-items:center}
+.logo .mark svg{stroke:var(--bg)}.logo .mark svg circle{fill:var(--blue)}
+.logo b{font-size:24px;font-weight:800;letter-spacing:-.04em}.logo b span{color:var(--blue)}
+.tag{font-size:12.5px;color:var(--mut);padding:2px 8px 18px}
+.nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:10px;color:var(--mut);font-weight:500;font-size:13.5px;margin-bottom:1px;text-decoration:none}
+.nav a svg{width:17px;height:17px;flex:none;opacity:.85}.nav a:hover{background:var(--panel2);color:var(--txt)}
+.nav a.on{background:var(--txt);color:var(--bg)}.nav a.on svg{opacity:1}
+.nav .sec{font-size:12px;color:var(--mut2);margin:18px 10px 6px;font-weight:500}
+.nb{margin-left:auto;background:var(--blue);color:#fff;border-radius:20px;font-size:11px;padding:0 7px;font-weight:600;line-height:18px}.nb.g{background:var(--go)}
+.foot{margin-top:auto;padding:14px 8px 0;font-size:12px;color:var(--mut2);display:flex;flex-direction:column;gap:8px}
+main{padding:22px 34px 80px;min-width:0;max-width:1480px}
+.top{display:flex;align-items:flex-end;gap:12px;margin-bottom:22px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);padding:14px 0 12px;margin-top:-14px}
+.top h1{font-size:30px;margin:0;font-weight:700;letter-spacing:-.035em;line-height:1.1}.top .sub{color:var(--mut);font-size:13.5px;margin-top:4px}
+.sp{flex:1}.kbd{font-size:11px;border:1px solid var(--line2);border-radius:6px;padding:1px 6px;color:var(--mut)}
+.srch{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer;color:var(--mut);min-width:250px;box-shadow:var(--shadow)}
+.tn{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-weight:600;box-shadow:var(--shadow)}
+.demo{background:color-mix(in srgb,var(--warn) 10%,var(--panel));border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);color:var(--txt);padding:10px 14px;border-radius:12px;font-size:13px;margin-bottom:18px}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
 @media(max-width:1200px){.g5{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:780px){.app{grid-template-columns:1fr}aside{position:static;height:auto}.g4,.g3,.g2,.g5{grid-template-columns:1fr}main{padding:16px}.srch{min-width:0}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
-.card h3{margin:0 0 14px;font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:8px}.card h3 .sp{flex:1}
-.kpi .l{color:var(--mut);font-size:12.5px;font-weight:600}.kpi .v{font-size:30px;font-weight:800;margin-top:2px;letter-spacing:-.02em}.kpi .d{font-size:12px;color:var(--mut);margin-top:2px}
-.up{color:var(--ok)}.down{color:var(--bad)}.mut{color:var(--mut)}.mono{font-family:"JetBrains Mono",monospace}
-.btn{background:var(--panel2);border:1px solid var(--line);padding:8px 14px;border-radius:10px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:6px;color:var(--txt);text-decoration:none!important}
-.btn:hover{border-color:var(--line2)}.btn.pri{background:linear-gradient(135deg,var(--acc),#e8306a);border:0;color:#fff;box-shadow:0 6px 18px -8px var(--acc)}.btn.sm{padding:5px 10px;font-size:12px}.btn.on{border-color:var(--acc2);color:var(--acc2)}
-input[type=text],input[type=number],select,textarea{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:8px 11px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--acc2);box-shadow:0 0 0 3px var(--glow)}
-input[type=range]{accent-color:var(--acc)}input[type=checkbox]{accent-color:var(--acc)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
-table{width:100%;border-collapse:collapse}th{text-align:left;color:var(--mut);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:10px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none}
-td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}tr.row:hover td{background:var(--panel2)}tr.row{cursor:pointer}
-.pimg{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:23px;background:linear-gradient(135deg,var(--panel2),var(--bg2));border:1px solid var(--line);flex:none}
-.pn{display:flex;gap:11px;align-items:center;min-width:0}.pn b{display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pn small{color:var(--mut);font-size:12px}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:700;white-space:nowrap;border:1px solid transparent}
-.st-Emerging{background:rgba(31,209,122,.12);color:var(--ok)}.st-Rising{background:rgba(79,157,255,.12);color:#4f9dff}.st-Peak{background:rgba(255,176,32,.12);color:var(--warn)}.st-Declining{background:rgba(255,77,79,.12);color:var(--bad)}
-.v-GO{background:rgba(31,209,122,.14);color:var(--go);border-color:rgba(31,209,122,.4)}.v-TEST{background:rgba(79,157,255,.14);color:var(--test);border-color:rgba(79,157,255,.4)}.v-WATCH{background:rgba(255,176,32,.14);color:var(--watch);border-color:rgba(255,176,32,.4)}.v-AVOID{background:rgba(255,77,79,.14);color:var(--avoid);border-color:rgba(255,77,79,.4)}
-.bar{height:7px;background:var(--panel2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;border-radius:9px}
-.modal{position:fixed;inset:0;background:rgba(3,5,10,.7);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:28px 16px;overflow:auto;z-index:50}
-.modal.on{display:flex}.mbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;width:min(1120px,100%);padding:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
-.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin:16px 0;overflow:auto}.tabs button{background:none;border:0;padding:10px 13px;color:var(--mut);cursor:pointer;border-bottom:2px solid transparent;font-weight:600;white-space:nowrap}
-.tabs button.on{color:var(--txt);border-color:var(--acc)}
-.r2{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}.r2:last-child{border:0}
-.legend{display:flex;gap:6px;flex-wrap:wrap}.mchip{cursor:pointer;border:1px solid var(--line);background:var(--bg2);border-radius:20px;padding:3px 9px;font-size:12px;font-weight:600;color:var(--mut)}.mchip.on{color:var(--txt);border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
-.toast{position:fixed;bottom:22px;right:22px;background:var(--panel2);border:1px solid var(--line2);padding:11px 16px;border-radius:12px;opacity:0;transform:translateY(8px);transition:.25s;z-index:99;font-weight:600}.toast.on{opacity:1;transform:none}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
-.pc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;cursor:pointer;transition:.18s;position:relative}.pc:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(0,0,0,.6)}
+@media(max-width:780px){.app{grid-template-columns:1fr}aside{position:static;height:auto}.g4,.g3,.g2,.g5{grid-template-columns:1fr}main{padding:16px}.srch{min-width:0}.top h1{font-size:24px}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;min-width:0;box-shadow:var(--shadow)}
+.card h3{margin:0 0 14px;font-size:16px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}.card h3 .sp{flex:1}
+.kpi .l{color:var(--mut);font-size:13px;font-weight:500}.kpi .v{font-size:34px;font-weight:700;margin-top:2px;letter-spacing:-.04em;line-height:1.1}.kpi .d{font-size:12.5px;color:var(--mut);margin-top:2px}
+.up{color:var(--ok)}.down{color:var(--bad)}.mut{color:var(--mut)}.mono{font-variant-numeric:tabular-nums;font-weight:600}
+.btn{background:var(--panel);border:1px solid var(--line2);padding:8px 14px;border-radius:10px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:6px;color:var(--txt);text-decoration:none!important;transition:background .15s,border-color .15s}
+.btn:hover{background:var(--panel2)}.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}.btn.pri:hover{background:var(--blue2)}.btn.sm{padding:5px 10px;font-size:12.5px;border-radius:8px}.btn:disabled{opacity:.55;cursor:default}
+input[type=text],input[type=number],select,textarea{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:8px 11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--glow)}
+input[type=range],input[type=checkbox]{accent-color:var(--blue)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;color:var(--mut);font-weight:500;font-size:12.5px;padding:11px 10px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none;position:sticky;top:0;background:var(--panel);z-index:1}
+td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:middle}tr.row:hover td{background:var(--bg2)}tr.row{cursor:pointer}tr:last-child td{border-bottom:0}
+.pimg{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:23px;background:var(--panel2);flex:none;overflow:hidden}.pimg img{width:100%;height:100%;object-fit:cover}
+.pn{display:flex;gap:12px;align-items:center;min-width:0}.pn b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pn small{color:var(--mut);font-size:12.5px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.st-Emerging{background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--ok)}.st-Rising{background:color-mix(in srgb,var(--blue) 12%,transparent);color:var(--blue)}.st-Peak{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}.st-Declining{background:color-mix(in srgb,var(--bad) 12%,transparent);color:var(--bad)}
+.v-GO{background:var(--go);color:#fff}.v-TEST{background:var(--test);color:#fff}.v-WATCH{background:color-mix(in srgb,var(--watch) 18%,transparent);color:var(--watch);border-color:color-mix(in srgb,var(--watch) 45%,transparent)}.v-AVOID{background:color-mix(in srgb,var(--avoid) 12%,transparent);color:var(--avoid);border-color:color-mix(in srgb,var(--avoid) 40%,transparent)}
+.new{background:var(--txt);color:var(--bg);font-size:10.5px;padding:1px 7px;border-radius:20px;font-weight:700}
+.bar{height:6px;background:var(--panel2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;border-radius:9px}
+.modal{position:fixed;inset:0;background:rgba(10,12,20,.55);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:32px 16px;overflow:auto;z-index:50}
+.modal.on{display:flex}.mbox{background:var(--panel);border:1px solid var(--line);border-radius:22px;width:min(1120px,100%);padding:26px;box-shadow:0 40px 90px -30px rgba(0,0,0,.55);animation:pop .22s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+.tabs{display:flex;gap:4px;margin:18px 0;overflow:auto;background:var(--panel2);padding:4px;border-radius:12px;width:fit-content;max-width:100%}
+.tabs button{background:none;border:0;padding:7px 13px;color:var(--mut);cursor:pointer;border-radius:9px;font-weight:600;white-space:nowrap}
+.tabs button.on{color:var(--txt);background:var(--panel);box-shadow:var(--shadow)}
+.r2{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}.r2:last-child{border:0}
+.legend{display:flex;gap:6px;flex-wrap:wrap}.mchip{cursor:pointer;border:1px solid var(--line2);background:var(--panel);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--mut)}.mchip.on{color:var(--txt);border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,10px);background:var(--txt);color:var(--bg);padding:11px 18px;border-radius:12px;opacity:0;transition:.25s;z-index:99;font-weight:600}.toast.on{opacity:1;transform:translate(-50%,0)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
 .hook{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:7px;font-size:13px}
 pre.out{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px;max-height:460px;overflow:auto;font-family:inherit;margin:0}
-label.f{display:block;font-size:12px;color:var(--mut);margin-bottom:5px;font-weight:600}.fg{margin-bottom:12px}.fg input,.fg select{width:100%}
+label.f{display:block;font-size:12.5px;color:var(--mut);margin-bottom:5px;font-weight:500}.fg{margin-bottom:12px}.fg input,.fg select{width:100%}
 .empty{text-align:center;color:var(--mut);padding:44px}
-.star{cursor:pointer;font-size:18px;color:var(--mut2)}.star.on{color:#ffc53d}
-.heat td{padding:0;border:1px solid var(--bg)}.heat .c{height:34px;display:grid;place-items:center;font-size:11.5px;font-weight:700;font-family:"JetBrains Mono"}
-.crit{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.crit:last-child{border:0}
+.star{cursor:pointer;font-size:18px;color:var(--mut2)}.star.on{color:#f0b400}
+.heat td{padding:0;border:2px solid var(--panel)}.heat .c{height:34px;display:grid;place-items:center;font-size:12px;font-weight:600;border-radius:6px}
+.crit{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.crit:last-child{border:0}
 .dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}
-.d-p{background:rgba(31,209,122,.15);color:var(--ok)}.d-w{background:rgba(255,176,32,.15);color:var(--warn)}.d-f{background:rgba(255,77,79,.15);color:var(--bad)}
-.verdict{border-radius:16px;padding:18px;border:1px solid;display:flex;gap:16px;align-items:center}
-.verdict .big{font-size:30px;font-weight:800;letter-spacing:-.02em}
-.kan{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:12px;overflow:auto}.col{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px;min-height:300px}
-.col h4{margin:4px 4px 10px;font-size:13px;display:flex;justify-content:space-between}.kc{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:10px;margin-bottom:8px;cursor:grab}
-.col.over{border-color:var(--acc2)}
-.pal{position:fixed;inset:0;background:rgba(3,5,10,.55);display:none;justify-content:center;padding-top:12vh;z-index:80}.pal.on{display:flex}
-.pal .box{width:min(620px,92%);background:var(--panel);border:1px solid var(--line2);border-radius:16px;overflow:hidden;height:fit-content}
-.pal input{width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:16px;font-size:16px;background:transparent}
-.pal .it{padding:10px 16px;display:flex;gap:10px;align-items:center;cursor:pointer}.pal .it:hover,.pal .it.sel{background:var(--panel2)}
-.msg{padding:10px 14px;border-radius:12px;margin-bottom:8px;max-width:85%;white-space:pre-wrap}.msg.u{background:linear-gradient(135deg,var(--acc),#e8306a);color:#fff;margin-left:auto}.msg.a{background:var(--panel2)}
-.seg{display:inline-flex;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:3px}.seg button{border:0;background:none;padding:5px 11px;border-radius:7px;cursor:pointer;color:var(--mut);font-weight:600;font-size:12.5px}.seg button.on{background:var(--panel2);color:var(--txt)}
-.cal{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}.cal div{background:var(--panel2);border-radius:8px;padding:8px 2px;text-align:center;font-size:11.5px;color:var(--mut);font-weight:600}.cal .now{outline:2px solid var(--acc);color:var(--txt)}.cal .hot{background:rgba(255,61,110,.15);color:var(--acc)}
+.d-p{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}.d-w{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}.d-f{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.verdict{border-radius:18px;padding:20px;border:1px solid;display:flex;gap:18px;align-items:center}.verdict .big{font-size:30px;font-weight:800;letter-spacing:-.03em}
+.kan{display:grid;grid-template-columns:repeat(5,minmax(210px,1fr));gap:14px;overflow:auto}.col{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:10px;min-height:300px}
+.col h4{margin:4px 4px 10px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center}.kc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px;margin-bottom:8px;cursor:grab;box-shadow:var(--shadow)}
+.col.over{border-color:var(--blue);background:var(--glow)}
+.pal{position:fixed;inset:0;background:rgba(10,12,20,.45);backdrop-filter:blur(4px);display:none;justify-content:center;padding-top:12vh;z-index:80}.pal.on{display:flex}
+.pal .box{width:min(620px,92%);background:var(--panel);border:1px solid var(--line2);border-radius:18px;overflow:hidden;height:fit-content;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.pal input{width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:18px;font-size:17px;background:transparent;box-shadow:none!important}
+.pal .it{padding:10px 18px;display:flex;gap:10px;align-items:center;cursor:pointer}.pal .it:hover{background:var(--panel2)}
+.msg{padding:10px 14px;border-radius:14px;margin-bottom:8px;max-width:85%;white-space:pre-wrap}.msg.u{background:var(--blue);color:#fff;margin-left:auto;border-bottom-right-radius:4px}.msg.a{background:var(--panel2);border-bottom-left-radius:4px}
+.seg{display:inline-flex;background:var(--panel2);border-radius:11px;padding:3px}.seg button{border:0;background:none;padding:6px 12px;border-radius:8px;cursor:pointer;color:var(--mut);font-weight:600;font-size:13px}.seg button.on{background:var(--panel);color:var(--txt);box-shadow:var(--shadow)}
+.cal{display:grid;grid-template-columns:repeat(12,1fr);gap:6px}.cal div{background:var(--panel2);border-radius:9px;padding:9px 2px;text-align:center;font-size:12px;color:var(--mut);font-weight:600}.cal .now{background:var(--txt);color:var(--bg)}.cal .hot{box-shadow:inset 0 -3px 0 var(--blue)}
+/* ---- The signature element: product finds as price tags ---- */
+.pc{position:relative;background:var(--tag);border:1px solid var(--line2);border-radius:14px 14px 14px 14px;padding:18px 16px 14px 16px;cursor:pointer;transition:transform .18s,box-shadow .18s;clip-path:polygon(22px 0,100% 0,100% 100%,0 100%,0 22px)}
+.pc:before{content:"";position:absolute;left:12px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.pc:hover{transform:translateY(-3px) rotate(-.4deg);box-shadow:0 18px 30px -20px rgba(18,20,28,.45)}
+.pc .ph{height:116px;margin:4px 0 12px;border-radius:10px;background:var(--panel2);display:grid;place-items:center;font-size:54px;overflow:hidden}.pc .ph img{width:100%;height:100%;object-fit:cover}
+.pc .price{font-family:"Bricolage Grotesque","Geist",system-ui,sans-serif;font-size:28px;font-weight:800;letter-spacing:-.04em;line-height:1}.pc .price small{font-size:13px;font-weight:600;color:var(--mut);margin-left:3px;letter-spacing:0}
+.pc .nm{font-weight:600;margin:6px 0 2px;line-height:1.3}.pc .meta{color:var(--mut);font-size:12.5px}
+.stamp{position:absolute;top:14px;right:12px;transform:rotate(6deg);font-family:"Bricolage Grotesque","Geist",system-ui,sans-serif;font-weight:800;font-size:13px;letter-spacing:.04em;padding:3px 9px;border:2px solid currentColor;border-radius:7px;background:var(--tag)}
+.stamp.GO{color:var(--go)}.stamp.TEST{color:var(--test)}.stamp.WATCH{color:var(--watch)}.stamp.AVOID{color:var(--avoid)}
+.pc .row3{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line2);font-size:12.5px}
+.hero{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:22px;align-items:stretch;margin-bottom:20px}
+.hero .intro{background:var(--txt);color:var(--bg);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.hero .intro h2{font-size:34px;line-height:1.05;letter-spacing:-.04em;margin:0 0 10px;font-weight:800}.hero .intro p{opacity:.75;margin:0 0 16px}
+.hero .intro .counts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.hero .intro .counts a{color:inherit;text-decoration:none;border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);border-radius:12px;padding:8px}
+.hero .intro .counts b{display:block;font-family:"Bricolage Grotesque","Geist",system-ui,sans-serif;font-size:24px}.hero .intro .counts span{font-size:11.5px;opacity:.75}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:16px;overflow-x:auto;padding:4px 2px 10px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.src{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}.src:last-child{border:0}
+.src .ic{width:34px;height:34px;border-radius:10px;background:var(--panel2);display:grid;place-items:center;font-size:17px;flex:none}
+.linkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}.linkgrid a{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;color:var(--txt);font-weight:500;background:var(--panel)}.linkgrid a:hover{border-color:var(--blue);text-decoration:none}
 </style>
 </head>
 <body>
 <div class="app">
 <aside>
   <div class="logo"><div class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></div><b>Pee<span>K</span></b></div>
-  <div class="tag">See global winners before Tunisia does</div>
+  <div class="tag">Spot global winners before Tunisia does</div>
   <nav class="nav" id="nav"></nav>
-  <div class="foot"><span class="btn sm" id="theme">◐ Theme</span><div style="margin-top:8px">Selling to 🇹🇳 Tunisia · 12 source markets</div></div>
+  <div class="foot"><span class="btn sm" id="theme" style="width:fit-content">◐ Light / dark</span><div>Selling to 🇹🇳 Tunisia, watching 12 markets</div><div id="upd"></div></div>
 </aside>
 <main id="main"></main>
 </div>
@@ -103,7 +130,7 @@ label.f{display:block;font-size:12px;color:var(--mut);margin-bottom:5px;font-wei
 // ================= Config =================
 const ICON={dash:'M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5',judge:'M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0zM8 21h8',heat:'M3 3h5v5H3zM10 3h5v5h-5zM17 3h4v5h-4zM3 10h5v5H3zM10 10h5v5h-5zM17 10h4v5h-4zM3 17h5v4H3zM10 17h5v4h-5zM17 17h4v4h-4z',wave:'M2 12c3-6 5-6 8 0s5 6 8 0 3-3 4-3',target:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',ads:'M4 5h16v14H4zM10 9l5 3-5 3z',ai:'M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z',calc:'M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2',cal:'M4 5h16v16H4zM4 10h16M8 3v4M16 3v4',kan:'M4 4h4v16H4zM10 4h4v10h-4zM16 4h4v7h-4z',cmp:'M7 4v16M17 4v16M3 8h8M13 14h8',bell:'M6 16v-5a6 6 0 1 1 12 0v5l2 2H4zM10 21h4',db:'M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0zM4 6c0 2 16 2 16 0M4 12c0 2 16 2 16 0',cog:'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2'};
 const ic=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="${ICON[k]}"/></svg>`;
-const NAV=[['Intelligence'],['dashboard','Dashboard','dash'],['explorer','Product Explorer','search'],['verdicts','Verdict Board','judge'],['heatmap','Global Heatmap','heat'],['waves','Wave Tracker','wave'],['map','Opportunity Map','target'],['ads','Ad Intelligence','ads'],['studio','AI Studio','ai'],
+const NAV=[['Intelligence'],['dashboard','Dashboard','dash'],['explorer','Product Explorer','search'],['library','Product Library','db'],['verdicts','Verdict Board','judge'],['heatmap','Global Heatmap','heat'],['waves','Wave Tracker','wave'],['map','Opportunity Map','target'],['ads','Ad Intelligence','ads'],['studio','AI Studio','ai'],
  ['Tunisia ops'],['profit','Profit Lab (TND)','calc'],['seasons','Season Planner','cal'],['pipeline','Pipeline','kan'],['compare','Compare','cmp'],['alerts','Alerts','bell'],['System'],['data','Data Sources','db'],['config','Criteria & Costs','cog']];
 const MK=[['US','USA','🇺🇸','#4f9dff','anglo','amazon.com'],['UK','UK','🇬🇧','#38bdf8','anglo','amazon.co.uk'],['DE','Germany','🇩🇪','#a78bfa','eu','amazon.de'],['FR','France','🇫🇷','#8b5cf6','eu','amazon.fr'],['ES','Spain','🇪🇸','#c084fc','eu','amazon.es'],['IT','Italy','🇮🇹','#e879f9','eu','amazon.it'],
  ['CN','China','🇨🇳','#ff6a3d','asia',''],['JP','Japan','🇯🇵','#fb923c','asia','amazon.co.jp'],['KR','S. Korea','🇰🇷','#fbbf24','asia',''],['TR','Türkiye','🇹🇷','#2dd4bf','em','amazon.com.tr'],['AE','Gulf (UAE/KSA)','🇦🇪','#34d399','em','amazon.ae'],['BR','Brazil','🇧🇷','#a3e635','em','amazon.com.br']];
@@ -115,7 +142,7 @@ const DEF={usd:3.05,duty:20,vat:19,tax:1,deliv:8,retFee:5,ret:20,conf:75,cpa:7,
 let S=load('pk_cfg',DEF);S.w={...DEF.w,...S.w};S.c={...DEF.c,...S.c};
 function load(k,d){try{const v=localStorage.getItem(k);return v?Object.assign(structuredClone(d),JSON.parse(v)):structuredClone(d)}catch(e){return structuredClone(d)}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-try{document.documentElement.dataset.theme=localStorage.getItem('pk_theme')||'dark'}catch(e){}
+try{document.documentElement.dataset.theme=localStorage.getItem('pk_theme')||'light'}catch(e){}
 
 // ================= Demo dataset =================
 // name,cat,icon,costUSD,shipUSD,kg,tndPrice,ads,adDays,stores,tnSellers,fragile,restricted,seasons(0=evergreen),origin,shape(r rise,f fad,e evergreen,d decline),t0,hooks
@@ -163,8 +190,9 @@ function genTrend(origin,shape,t0,seed){const r=seeded(seed),o=MC[origin]?.[4]||
   for(let t=0;t<16;t++){const x=t-(t0+3+L);let v;
    if(shape==='r')v=10+amp/(1+Math.exp(-x/1.6));else if(shape==='f')v=12+amp*Math.exp(-((x/2.6)**2));else if(shape==='d')v=12+amp/(1+Math.exp(x/2));else v=48+r()*10;
    a.push(Math.round(Math.max(2,Math.min(100,v+(r()-.5)*7))))}out[c]=a});return out}
+let OVR=load('pk_ovr',{});const okey=p=>String(p.name).toLowerCase();
 let DB=RAW.map((x,i)=>mk({name:x[0],cat:x[1],icon:x[2],cost:x[3],ship:x[4],kg:x[5],tnd:x[6],ads:x[7],adDays:x[8],stores:x[9],tnSellers:x[10],fragile:!!x[11],restricted:!!x[12],seasons:x[13]||0,origin:x[14],trend:genTrend(x[14],x[15],x[16],i*13+7),hooks:x[17],source:'demo',id:'d'+i}));
-function mk(p){p.suppliers=p.suppliers||[['1688','https://s.1688.com/selloffer/offer_search.htm?keywords='],['AliExpress','https://www.aliexpress.com/wholesale?SearchText='],['Alibaba','https://www.alibaba.com/trade/search?SearchText=']].map(([n,u])=>({name:n,url:u+encodeURIComponent(p.name)}));return p}
+function mk(p){if(typeof OVR!=="undefined"&&OVR[okey(p)])Object.assign(p,OVR[okey(p)]);p.suppliers=p.suppliers||[['1688','https://s.1688.com/selloffer/offer_search.htm?keywords='],['AliExpress','https://www.aliexpress.com/wholesale?SearchText='],['Alibaba','https://www.alibaba.com/trade/search?SearchText=']].map(([n,u])=>({name:n,url:u+encodeURIComponent(p.name)}));return p}
 try{JSON.parse(localStorage.getItem('pk_import')||'[]').forEach(x=>DB.push(normalize(x)))}catch(e){}
 let PL=load('pk_pipe',{}),NOTES=load('pk_notes',{}),CMP=[],ALR=load('pk_alerts',{list:[{n:'Early winners',score:68,stage:'Emerging',tn:3},{n:'GO verdicts',verdict:'GO'}]});
 delete PL.__proto__;
@@ -236,9 +264,12 @@ function lines(t,keys,w=660,h=230){const mx=Math.max(1,...keys.flatMap(k=>t[k]))
  return `<svg viewBox="0 0 ${w} ${h}" width="100%">${g}${keys.map(k=>`<polyline fill="none" stroke="${MC[k][3]}" stroke-width="2.4" stroke-linejoin="round" points="${t[k].map((v,i)=>`${30+i/(t[k].length-1)*(w-40)},${h-24-v/mx*(h-40)}`).join(' ')}"/>`).join('')}<text x="30" y="${h-4}" fill="var(--mut2)" font-size="10">16 weeks ago</text><text x="${w-56}" y="${h-4}" fill="var(--mut2)" font-size="10">this week</text></svg>`}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2200)}
 const star=id=>`<span class="star ${PL[id]?'on':''}" data-star="${id}" title="Add to pipeline">${PL[id]?'★':'☆'}</span>`;
-let LIVE=0;const hasDemo=()=>DB.some(p=>p.source==='demo');
+let LIVE=0,UPD='';const hasDemo=()=>DB.some(p=>p.source==='demo');
 const demoNote=()=>hasDemo()?`<div class="demo">⚠️ <b>Demo dataset</b>: the numbers are illustrative. Real data loads automatically once the collector has created <span class="mono">products.json</span> in your repo, or generate candidates in <a href="#studio">AI Studio</a>. Cost defaults are estimates you can change in <a href="#config">Criteria & Costs</a>.</div>`:'';
-const pn=p=>`<div class="pn"><div class="pimg">${p.icon}</div><div style="min-width:0"><b>${p.name}</b><small>${p.cat} · ${MC[p.origin]?.[2]||''} origin</small></div></div>`;
+const thumb=p=>p.image?`<img src="${esc(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith('${p.icon}')">`:p.icon;
+const LASTV=(()=>{try{const v=localStorage.getItem('pk_lastv')||'';localStorage.setItem('pk_lastv',new Date().toISOString().slice(0,10));return v}catch(e){return ''}})();
+const isNew=p=>p.source!=='demo'&&p.firstSeen&&(!LASTV||p.firstSeen>=LASTV);
+const pn=p=>`<div class="pn"><div class="pimg">${thumb(p)}</div><div style="min-width:0"><b>${p.name}${isNew(p)?' <span class="new">New</span>':''}</b><small>${p.cat} · ${MC[p.origin]?.[2]||''} origin</small></div></div>`;
 const hl=(v,good)=>`<span class="${good?'up':'down'}">${v}</span>`;
 
 // ================= Views =================
@@ -246,9 +277,8 @@ const V={};
 V.dashboard=()=>{const ps=[...DB].sort((a,b)=>M(b).score-M(a).score),cnt=k=>DB.filter(p=>M(p).J.v===k).length;
  const sig=[];DB.forEach(p=>MK.forEach(m=>{const g=M(p).g[m[0]];if(g>.45)sig.push([p,m,g])}));sig.sort((a,b)=>b[2]-a[2]);
  const cats={};DB.forEach(p=>(cats[p.cat]=cats[p.cat]||[]).push(M(p).score));const catR=Object.entries(cats).map(([c,a])=>[c,Math.round(avg(a)),a.length]).sort((a,b)=>b[1]-a[1]).slice(0,8);
- return `${demoNote()}<div class="grid g5">${['GO','TEST','WATCH','AVOID'].map(v=>`<a class="card kpi" href="#verdicts" style="text-decoration:none;color:inherit"><div class="l">${VC[v][0]} ${v} verdicts</div><div class="v" style="color:var(--${v.toLowerCase()})">${cnt(v)}</div><div class="d">${VC[v][1]}</div></a>`).join('')}
- <div class="card kpi"><div class="l">📦 Products tracked</div><div class="v">${DB.length}</div><div class="d">across 12 source markets</div></div></div>
- <div class="grid" style="grid-template-columns:1.7fr 1fr;margin-top:14px"><div class="card"><h3>🏆 Top opportunities for Tunisia<span class="sp"></span><a href="#explorer" class="btn sm">View all</a></h3><table><tr><th>Product</th><th>Score</th><th>Verdict</th><th>Global trend</th><th>Wave ETA</th><th>Profit/order</th></tr>
+ return `${demoNote()}<div class="hero"><div class="intro"><div><h2>${cnt('GO')?cnt('GO')+(cnt('GO')>1?' products are':' product is')+' ready to launch':'No clear winner yet this week'}</h2><p>${DB.length} products tracked across 12 markets${UPD?', data updated '+UPD:''}. Here are the strongest picks for Tunisia right now.</p></div><div class="counts">${['GO','TEST','WATCH','AVOID'].map(v=>`<a href="#verdicts"><b>${cnt(v)}</b><span>${v}</span></a>`).join('')}</div></div><div class="strip">${ps.filter(p=>M(p).J.v!=='AVOID').slice(0,6).map(pcard).join('')}</div></div>
+ <div class="grid" style="grid-template-columns:1.7fr 1fr;margin-top:14px"><div class="card" style="overflow:auto"><h3>🏆 Top opportunities for Tunisia<span class="sp"></span><a href="#explorer" class="btn sm">View all</a></h3><table><tr><th>Product</th><th>Score</th><th>Verdict</th><th>Global trend</th><th>Wave ETA</th><th>Profit/order</th></tr>
  ${ps.slice(0,7).map(p=>{const m=M(p);return `<tr class="row" data-open="${p.id}"><td>${pn(p)}</td><td>${ring(m.score,40)}</td><td>${vchip(m.J.v)}</td><td>${spark(globalAvg(p),scol(m.score),90,28)}</td><td class="mut" style="font-size:12.5px">${m.W.eta}</td><td>${hl(tnd(m.L.profit),m.L.profit>0)}</td></tr>`}).join('')}</table></div>
  <div class="grid"><div class="card"><h3>⚡ Live signals</h3>${sig.slice(0,6).map(([p,m,g])=>`<div class="r2 row" data-open="${p.id}"><span>${m[2]} <b>${p.name}</b> <span class="mut">in ${m[1]}</span></span><b class="up">${pct(g)}</b></div>`).join('')||'<span class="mut">No strong signals</span>'}</div>
  <div class="card"><h3>📅 Coming up in Tunisia</h3>${upcoming()}</div></div></div>
@@ -270,9 +300,24 @@ V.explorer=()=>{const cats=[...new Set(DB.map(p=>p.cat))].sort();let ps=filtered
  ${ps.map(p=>{const m=M(p);return `<tr class="row" data-open="${p.id}"><td>${star(p.id)}</td><td><input type="checkbox" data-cmp="${p.id}" ${CMP.includes(p.id)?'checked':''}></td><td style="max-width:260px">${pn(p)}</td><td>${ring(m.score,40)}</td><td>${vchip(m.J.v)}</td><td><span class="chip st-${m.stage}">${m.stage}</span></td><td>${spark(globalAvg(p),scol(m.score),80,26)}</td>
  <td style="min-width:80px">${Math.round(m.vel)}${bar(m.vel,'#4f9dff')}</td><td>${m.breadth}/12</td><td style="min-width:80px">${Math.round(m.sat)}${bar(m.sat,m.sat>65?'var(--bad)':m.sat>38?'var(--warn)':'var(--ok)')}</td><td>${p.tnSellers}</td><td class="mono">${tnd(p.tnd)}</td><td>${hl('<b>'+tnd(m.L.profit)+'</b>',m.L.profit>0)}<br><small class="mut">${Math.round(m.L.margin*100)}% margin</small></td></tr>`}).join('')}</table>${ps.length?'':'<div class="empty">No products match these filters.</div>'}</div>`}
  ${CMP.length?`<div style="position:sticky;bottom:14px;margin-top:14px;display:flex;justify-content:center"><a class="btn pri" href="#compare">⇆ Compare ${CMP.length} selected</a></div>`:''}`};
-function pcard(p){const m=M(p);return `<div class="pc" data-open="${p.id}"><div style="display:flex;justify-content:space-between;gap:8px">${pn(p)}${ring(m.score,46)}</div><div style="margin:12px 0 8px">${spark(globalAvg(p),scol(m.score),240,40)}</div>
- <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">${vchip(m.J.v)}<span class="chip st-${m.stage}">${m.stage}</span></div><div class="r2"><span class="mut">Profit/order</span>${hl('<b>'+tnd(m.L.profit)+'</b>',m.L.profit>0)}</div><div class="r2"><span class="mut">Wave ETA</span><span>${m.W.eta}</span></div><div class="r2"><span class="mut">TN sellers</span><b>${p.tnSellers}</b></div><div style="position:absolute;top:10px;right:64px">${star(p.id)}</div></div>`}
+function pcard(p){const m=M(p);return `<div class="pc" data-open="${p.id}"><span class="stamp ${m.J.v}">${m.J.v}</span><div class="ph">${thumb(p)}</div><div class="price">${Math.round(p.tnd)}<small>TND</small></div><div class="nm">${p.name}${isNew(p)?' <span class="new">New</span>':''}</div><div class="meta">${p.cat}, first took off in ${MC[M(p).W.origin]?.[2]||''} ${MC[M(p).W.origin]?.[1]||''}</div><div class="row3"><span>Score <b>${m.score}</b></span><span class="${m.L.profit>0?'up':'down'}"><b>${tnd(m.L.profit)}</b> profit</span>${star(p.id)}</div></div>`}
 
+const SI={seed:'🌱',reddit:'👽',meta:'📣',trends:'📈',ai:'🤖',manual:'✍️',import:'📥',collector:'📡'};
+const today=()=>new Date().toISOString().slice(0,10);
+function srcTab(p){const q=encodeURIComponent(p.query||p.name),rec=p.sources||[],L=(i,t,u)=>`<a target="_blank" rel="noopener" href="${u}">${i} ${t}</a>`;
+ const found=rec.length?rec.map(x=>`<div class="src"><div class="ic">${SI[x.type]||'🔗'}</div><div style="flex:1;min-width:0"><b>${esc(x.title||x.type)}</b><div class="mut" style="font-size:12.5px">${x.note?esc(x.note)+'. ':''}${x.date?'Found '+x.date:''}</div></div>${x.url?`<a class="btn sm" target="_blank" rel="noopener" href="${esc(x.url)}">Open</a>`:''}</div>`).join(''):`<p class="mut" style="margin:0">${p.source==='demo'?'This is a demo product, so it has no real source. Use the links to research it.':p.source==='ai'?'Suggested by AI from general knowledge, with no verified source. Check its ads before trusting it.':'No source was recorded for this product.'}</p>`;
+ const ads=(p.adSamples||[]).map(a=>`<div class="src"><div class="ic">📣</div><div style="flex:1;min-width:0"><b>${esc(a.page||'Advertiser')}</b><div class="mut" style="font-size:12.5px">${a.start?'Running since '+a.start:''}${a.country?' in '+a.country:''}</div></div><a class="btn sm" target="_blank" rel="noopener" href="${esc(a.url)}">View ad</a></div>`).join('');
+ return `<div class="grid g2"><div class="card"><h3>Where PeeK found it</h3>${found}${p.firstSeen?`<p class="mut" style="font-size:12.5px;margin:12px 0 0">First seen ${p.firstSeen}, last updated ${p.lastSeen||p.firstSeen}${p.runs?', seen in '+p.runs+' collector runs':''}.</p>`:''}</div>
+ <div class="card"><h3>Its ads${p.ads?` <span class="chip" style="background:var(--panel2)">${p.ads} active</span>`:''}</h3>${ads||'<p class="mut" style="margin:0 0 10px">No real ads saved yet. Add a Meta token to the collector and it will save the top ads here. Until then, search the ad libraries:</p>'}
+ <div class="linkgrid" style="margin-top:10px">${L('📣','Meta ads worldwide','https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&q='+q)}${L('🇹🇳','Meta ads in Tunisia','https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TN&q='+q)}${L('🎵','TikTok top ads','https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?keyword='+q)}${L('🎬','TikTok videos','https://www.tiktok.com/search?q='+q)}${L('▶️','YouTube Shorts','https://www.youtube.com/results?search_query='+q+'+tiktok+made+me+buy+it')}${L('📌','Pinterest','https://www.pinterest.com/search/pins/?q='+q)}</div></div></div>
+ <div class="grid g2" style="margin-top:16px"><div class="card"><h3>Check demand</h3><div class="linkgrid">${L('📈','Google Trends, worldwide','https://trends.google.com/trends/explore?date=today%2012-m&q='+q)}${L('🇹🇳','Google Trends, Tunisia','https://trends.google.com/trends/explore?geo=TN&date=today%2012-m&q='+q)}${L('🛒','Amazon US','https://www.amazon.com/s?k='+q)}${L('🟠','Temu','https://www.temu.com/search_result.html?search_key='+q)}${L('👽','Reddit','https://www.reddit.com/search/?q='+q)}${L('🇨🇳','Douyin','https://www.douyin.com/search/'+q)}</div></div>
+ <div class="card"><h3>Source it</h3><div class="linkgrid">${p.suppliers.map(x=>L('🏭',x.name,x.url)).join('')}</div></div></div>`}
+let LIB='all';
+V.library=()=>{const flt={all:()=>true,new:isNew,collector:p=>p.source==='collector',ai:p=>p.source==='ai',imported:p=>p.source==='import'||p.source==='manual'};
+ const ps=DB.filter(p=>p.source!=='demo').filter(flt[LIB]).sort((a,b)=>String(b.lastSeen||b.firstSeen).localeCompare(String(a.lastSeen||a.firstSeen)));
+ const all=DB.filter(p=>p.source!=='demo');
+ return `<div class="filters"><div class="seg">${[['all','All saved'],['new','New since last visit'],['collector','From the collector'],['ai','From AI Scout'],['imported','Imported']].map(([k,l])=>`<button data-lib="${k}" class="${LIB===k?'on':''}">${l} <span class="mut">${all.filter(flt[k]).length}</span></button>`).join('')}</div></div>
+ ${ps.length?`<div class="card" style="padding:0;overflow:auto"><table><tr><th>Product</th><th>Verdict</th><th>Found via</th><th>First seen</th><th>Last updated</th><th>Runs</th><th>Sources</th></tr>${ps.map(p=>`<tr class="row" data-open="${p.id}" data-tabto="sources"><td style="max-width:300px">${pn(p)}</td><td>${vchip(M(p).J.v)}</td><td>${[...new Set((p.sources||[]).map(x=>SI[x.type]||'🔗'))].join(' ')||SI[p.source]||''}</td><td>${p.firstSeen||'—'}</td><td>${p.lastSeen||'—'}</td><td>${p.runs||'—'}</td><td>${(p.sources||[]).length+(p.adSamples||[]).length}</td></tr>`).join('')}</table></div>`:`<div class="card empty">Nothing here yet. Products appear once the collector runs, or when you add them from AI Studio.</div>`}`};
 V.verdicts=()=>`${demoNote()}<div class="card" style="margin-bottom:14px"><h3>⚖️ How PeeK judges a product</h3><p class="mut" style="margin:-4px 0 0">Each product is checked against 12 success criteria. A <b>must-have</b> criterion (net margin, Tunisian competition, import safety) that fails means <b>AVOID</b>. <b>GO</b> needs a Winning Score ≥68, at least 78% of criteria points and no failures. <b>TEST</b> needs a score ≥55, at least 60% of points and ≤2 failures. Everything else is <b>WATCH</b>. You can change the thresholds in <a href="#config">Criteria & Costs</a>.</p></div>
  <div class="kan" style="grid-template-columns:repeat(4,minmax(240px,1fr))">${['GO','TEST','WATCH','AVOID'].map(v=>{const ps=DB.filter(p=>M(p).J.v===v).sort((a,b)=>M(b).score-M(a).score);return `<div class="col"><h4>${vchip(v)}<span class="mut">${ps.length}</span></h4>${ps.map(p=>{const m=M(p);return `<div class="kc" data-open="${p.id}" style="cursor:pointer"><div style="display:flex;justify-content:space-between;gap:6px">${pn(p)}${ring(m.score,36)}</div><div style="margin-top:8px">${bar(m.J.pts/m.J.max*100)}</div><div class="mut" style="font-size:11.5px;margin-top:5px">${m.J.pts}/${m.J.max} criteria pts · ${tnd(m.L.profit)}/order</div></div>`}).join('')||'<div class="empty" style="padding:20px">—</div>'}</div>`}).join('')}</div>`;
 
@@ -374,13 +419,14 @@ function openP(id){const p=DB.find(x=>x.id===id);if(!p)return;const m=M(p),J=m.J
   <div class="grid g2" style="align-content:start">${[['Active ads',p.ads],['Longest ad run',p.adDays+' d'],['Stores selling',p.stores],['TN sellers',p.tnSellers],['Markets rising',m.breadth+'/12'],['Wave ETA',m.W.eta]].map(([l,v])=>`<div class="card kpi"><div class="l">${l}</div><div class="v" style="font-size:${String(v).length>8?'15px':'24px'}">${v}</div></div>`).join('')}</div></div>`,
  markets:`<table><tr><th>Market</th><th>Now</th><th>4-wk growth</th><th>16-week trend</th><th>Status</th><th>Research</th></tr>${MK.map(k=>{const a=p.trend[k[0]];return `<tr><td>${k[2]} ${k[1]}</td><td class="mono">${a.at(-1)}</td><td class="${m.g[k[0]]>=0?'up':'down'}"><b>${pct(m.g[k[0]])}</b></td><td>${spark(a,k[3],120,28)}</td><td>${peaked(a)?'<span class="chip st-Declining">Past peak</span>':tookOff(a)?'<span class="chip st-Emerging">Took off</span>':'<span class="chip" style="background:var(--panel2)">Quiet</span>'}</td><td>${k[5]?`<a target="_blank" href="https://www.${k[5]}/s?k=${encodeURIComponent(p.name)}">Amazon ↗</a>`:k[0]==='CN'?`<a target="_blank" href="${p.suppliers[0].url}">1688 ↗</a>`:`<a target="_blank" href="https://www.coupang.com/np/search?q=${encodeURIComponent(p.name)}">Coupang ↗</a>`} · <a target="_blank" href="https://trends.google.com/trends/explore?geo=${k[0]==='UK'?'GB':k[0]==='CN'?'':k[0]}&q=${encodeURIComponent(p.name)}">Trends ↗</a></td></tr>`}).join('')}</table>`,
  profit:(()=>{const L=m.L;return `<div class="grid g2"><div>${[['Supplier + shipping','$'+(p.cost+p.ship).toFixed(2)],['Landed unit cost',tnd(L.unit)],['Delivery',tnd(L.deliv)],['Ad spend / delivered order',tnd(L.cpa)],['Return losses',tnd(L.retLoss)],['Break-even price',tnd(L.breakeven)],['Selling price',tnd(p.tnd)]].map(r=>`<div class="r2"><span>${r[0]}</span><b class="mono">${r[1]}</b></div>`).join('')}</div>
-  <div><div class="card kpi"><div class="l">Net profit per delivered order</div><div class="v ${L.profit>0?'up':'down'}">${tnd(L.profit)}</div><div class="d">${Math.round(L.margin*100)}% margin · ${L.mult.toFixed(1)}× markup</div></div><p class="mut" style="font-size:12px">${p.kg} kg${p.fragile?' · fragile':''}${p.restricted?' · ⚠️ may need import authorization in Tunisia':''}</p><button class="btn" data-calc="${p.id}">Open in Profit Lab →</button></div></div>`})(),
- source:`${p.suppliers.map(s=>`<div class="r2"><span>🏭 ${s.name}</span><a target="_blank" href="${s.url}">Open ↗</a></div>`).join('')}<div class="r2"><span>🇹🇳 Tunisian competitors (Meta Ad Library, TN)</span><a target="_blank" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TN&q=${encodeURIComponent(p.name)}">Open ↗</a></div><div class="r2"><span>🎬 TikTok top ads</span><a target="_blank" href="https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?keyword=${encodeURIComponent(p.name)}">Open ↗</a></div><div class="r2"><span>📈 Google Trends, worldwide</span><a target="_blank" href="https://trends.google.com/trends/explore?date=today%203-m&q=${encodeURIComponent(p.name)}">Open ↗</a></div><div class="r2"><span>🇹🇳 Google Trends, Tunisia</span><a target="_blank" href="https://trends.google.com/trends/explore?geo=TN&q=${encodeURIComponent(p.name)}">Open ↗</a></div>`,
+  <div><div class="card kpi"><div class="l">Net profit per delivered order</div><div class="v ${L.profit>0?'up':'down'}">${tnd(L.profit)}</div><div class="d">${Math.round(L.margin*100)}% margin · ${L.mult.toFixed(1)}× markup</div></div><p class="mut" style="font-size:12px">${p.kg} kg${p.fragile?' · fragile':''}${p.restricted?' · ⚠️ may need import authorization in Tunisia':''}</p><button class="btn" data-calc="${p.id}">Open in Profit Lab</button></div></div>
+  <div class="card" style="margin-top:16px"><h3>Edit this product's details</h3><p class="mut" style="margin-top:-8px;font-size:12.5px">Collected products start with estimated costs. Enter your real supplier quote and price so the verdict is accurate. Your edits are kept across data updates.</p><div class="grid g5">${[['cost','Supplier cost (USD)'],['ship','Shipping / unit (USD)'],['tnd','Selling price (TND)'],['tnSellers','Tunisian sellers'],['kg','Weight (kg)']].map(([k,l])=>`<div class="fg"><label class="f">${l}</label><input type="number" step="any" data-o="${k}" value="${p[k]}"></div>`).join('')}</div><button class="btn pri sm" id="osave" data-p="${p.id}">Save details</button></div>`})(),
+ sources:srcTab(p),
  ai:`<div class="filters"><select id="alang"><option>Tunisian Darija (Latin script)</option><option>Tunisian Darija (Arabic script)</option><option>French</option><option>Darija + French mix</option></select><select id="atype"><option>15s TikTok/Reels script + 5 hooks</option><option>Facebook ad copy (3 variants)</option><option>Product page (title, bullets, FAQ, offer)</option><option>Full launch plan (angles, offer, test budget)</option></select><button class="btn pri" id="ago" data-p="${p.id}">Generate</button></div><pre class="out" id="aout">Pick options, then click Generate.</pre>`,
  notes:`<textarea id="note" data-p="${p.id}" style="width:100%;min-height:220px" placeholder="Supplier quotes, test results, competitor notes… (saved in this browser)">${esc(NOTES[p.id]||'')}</textarea>`}[TAB];
- document.getElementById('mbox').innerHTML=`<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="pimg" style="width:60px;height:60px;font-size:34px">${p.icon}</div><div style="flex:1;min-width:200px"><h2 style="margin:0;letter-spacing:-.02em">${p.name}</h2><div class="mut" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px">${p.cat} · ${MC[p.origin]?.[2]} ${MC[p.origin]?.[1]} origin · source: ${p.source} ${vchip(J.v)}<span class="chip st-${m.stage}">${m.stage}</span></div></div>
+ document.getElementById('mbox').innerHTML=`<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="pimg" style="width:64px;height:64px;font-size:34px">${thumb(p)}</div><div style="flex:1;min-width:200px"><h2 style="margin:0;letter-spacing:-.02em">${p.name}</h2><div class="mut" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px">${p.cat} · ${MC[p.origin]?.[2]} ${MC[p.origin]?.[1]} origin · source: ${p.source} ${vchip(J.v)}<span class="chip st-${m.stage}">${m.stage}</span></div></div>
  ${star(p.id)}<span class="btn sm" data-addcmp="${p.id}">⇆ ${CMP.includes(p.id)?'In compare':'Compare'}</span>${ring(m.score,56)}<button class="btn" id="mx">✕</button></div>
- <div class="tabs">${[['verdict','⚖️ Verdict'],['overview','Overview'],['markets','🌍 Markets'],['profit','Profit (TND)'],['source','Sourcing'],['ai','✍️ AI creatives'],['notes','Notes']].map(([k,l])=>`<button data-tab="${k}" data-p="${p.id}" class="${TAB===k?'on':''}">${l}</button>`).join('')}</div>${body}`;
+ <div class="tabs">${[['verdict','⚖️ Verdict'],['overview','Overview'],['markets','🌍 Markets'],['profit','Profit (TND)'],['sources','🔗 Sources & ads'],['ai','✍️ AI creatives'],['notes','Notes']].map(([k,l])=>`<button data-tab="${k}" data-p="${p.id}" class="${TAB===k?'on':''}">${l}</button>`).join('')}</div>${body}`;
  document.getElementById('modal').classList.add('on')}
 let CUR=null;
 
@@ -403,10 +449,10 @@ const TOOLS=[{name:'search_products',description:'Search the PeeK dataset. Retur
  {name:'list_categories',description:'List categories with product counts and average score.',inputSchema:{type:'object',properties:{}},execute:()=>{const c={};DB.forEach(p=>{(c[p.cat]=c[p.cat]||[]).push(M(p).score)});return Object.entries(c).map(([k,a])=>({category:k,count:a.length,avg_score:Math.round(avg(a))}))}}];
 
 // ================= Router & events =================
-const TITLES={dashboard:['Dashboard','Global winners, judged for the Tunisian market'],explorer:['Product Explorer','Filter, sort, score and judge every candidate'],verdicts:['Verdict Board','Every product judged against your success criteria'],heatmap:['Global Heatmap','Growth across 12 source markets'],waves:['Wave Tracker','Catch the trend before it reaches Tunisia'],map:['Opportunity Map','Find the sweet spot'],ads:['Ad Intelligence','Proven hooks and long-running creatives'],studio:['AI Studio','Scout, analyse and create with Claude'],profit:['Profit Lab','Real COD profit in TND'],seasons:['Season Planner','Tunisian demand calendar'],pipeline:['Pipeline','Track products from idea to scaling'],compare:['Compare','Side-by-side comparison'],alerts:['Alerts','Rules that flag opportunities automatically'],data:['Data Sources','Free pipeline, import and export'],config:['Criteria & Costs','Tune the judgement engine']};
+const TITLES={dashboard:['Dashboard','Global winners, judged for the Tunisian market'],library:['Product Library','Every product PeeK has found, saved across runs'],explorer:['Product Explorer','Filter, sort, score and judge every candidate'],verdicts:['Verdict Board','Every product judged against your success criteria'],heatmap:['Global Heatmap','Growth across 12 source markets'],waves:['Wave Tracker','Catch the trend before it reaches Tunisia'],map:['Opportunity Map','Find the sweet spot'],ads:['Ad Intelligence','Proven hooks and long-running creatives'],studio:['AI Studio','Scout, analyse and create with Claude'],profit:['Profit Lab','Real COD profit in TND'],seasons:['Season Planner','Tunisian demand calendar'],pipeline:['Pipeline','Track products from idea to scaling'],compare:['Compare','Side-by-side comparison'],alerts:['Alerts','Rules that flag opportunities automatically'],data:['Data Sources','Free pipeline, import and export'],config:['Criteria & Costs','Tune the judgement engine']};
 function renderNav(){const g=DB.filter(p=>M(p).J.v==='GO').length,al=ALR.list.reduce((s,r)=>s+alertMatch(r).length,0),pl=Object.keys(PL).length,cur=(location.hash||'#dashboard').slice(1);
  document.getElementById('nav').innerHTML=NAV.map(n=>n.length===1?`<div class="sec">${n[0]}</div>`:`<a href="#${n[0]}" class="${cur===n[0]?'on':''}">${ic(n[2])}${n[1]}${n[0]==='verdicts'&&g?`<span class="nb g">${g} GO</span>`:n[0]==='alerts'&&al?`<span class="nb">${al}</span>`:n[0]==='pipeline'&&pl?`<span class="nb" style="background:var(--acc2)">${pl}</span>`:n[0]==='compare'&&CMP.length?`<span class="nb" style="background:var(--acc2)">${CMP.length}</span>`:''}</a>`).join('')}
-function route(){let v=(location.hash||'#dashboard').slice(1);if(!V[v])v='dashboard';renderNav();
+function route(){try{document.getElementById('upd').textContent=UPD?'Data updated '+UPD:''}catch(e){}let v=(location.hash||'#dashboard').slice(1);if(!V[v])v='dashboard';renderNav();
  document.getElementById('main').innerHTML=`<div class="top"><div><h1>${TITLES[v][0]}</h1><div class="sub">${TITLES[v][1]}</div></div><span class="sp"></span><div class="srch" id="opal">${ic('search').replace('<svg','<svg width="16" height="16"')} Search products… <span class="sp"></span><span class="kbd">Ctrl K</span></div><div class="tn">🇹🇳 Tunisia · TND</div></div>`+V[v]()}
 window.addEventListener('hashchange',()=>{document.getElementById('modal').classList.remove('on');route()});
 function rerenderModal(){if(document.getElementById('modal').classList.contains('on')&&CUR)openP(CUR)}
@@ -419,13 +465,15 @@ document.addEventListener('click',async e=>{const t=e.target,cl=s=>t.closest(s);
  if(cl('#opal')){openPal();return}
  if(cl('.pal .it')){const it=cl('.pal .it');closePal();if(it.dataset.go)location.hash=it.dataset.go;else{TAB='verdict';openP(it.dataset.pid)}return}
  if(t.id==='pal')return closePal();
- const o=cl('[data-open]');if(o&&!cl('a')&&!cl('select')&&!cl('input')){TAB='verdict';DM=null;openP(o.dataset.open);return}
+ const o=cl('[data-open]');if(o&&!cl('a')&&!cl('select')&&!cl('input')){TAB=o.dataset.tabto||'verdict';DM=null;openP(o.dataset.open);return}
  if(t.id==='mx'||t.id==='modal'){document.getElementById('modal').classList.remove('on');CUR=null;return}
  if(t.dataset.tab){TAB=t.dataset.tab;openP(t.dataset.p);return}
  if(cl('[data-dm]')){const k=cl('[data-dm]').dataset.dm;DM.on=DM.on.includes(k)?DM.on.filter(x=>x!==k):[...DM.on,k];if(!DM.on.length)DM.on=[k];openP(CUR);return}
  if(t.dataset.calc){CALC={id:t.dataset.calc};location.hash='profit';return}
  if(t.dataset.sort){F.dir=F.sort===t.dataset.sort?-F.dir:-1;F.sort=t.dataset.sort;route();return}
  if(t.dataset.fv){F.view=t.dataset.fv;route();return}
+ if(cl('[data-lib]')){LIB=cl('[data-lib]').dataset.lib;route();return}
+ if(t.id==='osave'){const p=DB.find(x=>x.id===t.dataset.p),o={};document.querySelectorAll('[data-o]').forEach(i=>{if(i.value!=='')o[i.dataset.o]=+i.value});OVR[okey(p)]={...(OVR[okey(p)]||{}),...o};save('pk_ovr',OVR);Object.assign(p,o);resetM();toast('Details saved');route();openP(p.id);return}
  if(t.dataset.stu){STU.tab=t.dataset.stu;route();return}
  if(t.id==='theme'){const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('pk_theme',n)}catch(e){}return}
  if(t.id==='ago'||t.id==='ggo'){const g=t.id==='ggo',p=DB.find(x=>x.id===(g?document.getElementById('gp').value:t.dataset.p));const lang=document.getElementById(g?'glang':'alang').value,type=document.getElementById(g?'gtype':'atype').value;
@@ -433,10 +481,10 @@ document.addEventListener('click',async e=>{const t=e.target,cl=s=>t.closest(s);
  if(t.id==='j2'){const p=DB.find(x=>x.id===t.dataset.p),o=document.getElementById('j2o');o.style.display='block';
   ask(`You are a seasoned Tunisian e-commerce (COD) product analyst. Judge this product for the Tunisian market strictly and honestly. Data from PeeK (some values may be estimates): ${JSON.stringify(brief(p))}, supplier cost $${p.cost}+$${p.ship} shipping, weight ${p.kg}kg, ${p.ads} active ads worldwide, longest ad ${p.adDays} days. Criteria results: ${JSON.stringify(M(p).J.R.map(r=>[r.name,r.st,r.val]))}. Give: 1) Your verdict (GO/TEST/WATCH/AVOID) and whether you agree with PeeK's ${M(p).J.v}; 2) Three strengths and three risks specific to Tunisia (purchasing power, culture, COD returns, customs, competition); 3) The best marketing angle for Tunisians; 4) A concrete 7-day test plan with budget in TND. Keep it under 250 words, plain text.`,o);return}
  if(t.id==='sgo'){const q=document.getElementById('sq').value||'any category',mk=document.getElementById('smk').value||'USA, Europe and China',b=document.getElementById('sb').value||'any price';STU.q=q;STU.status='Scouting…';const out=document.getElementById('sout');
-  const r=await ask(`You are an e-commerce product researcher. Suggest 6 physical products in the niche "${q}" (price: ${b}) that are currently trending or rising in ${mk} and that are likely to sell well in Tunisia through cash-on-delivery social ads. Exclude products restricted from import into Tunisia (drones, radio transmitters, weapons, medicines, e-cigarettes). Return ONLY a JSON array of objects with keys: name, cat, icon (one emoji), cost (est. USD supplier unit cost), ship (est. USD shipping per unit), kg, tnd (suggested Tunisian price), seasons (array of months 1-12, or [] if evergreen), origin (one of US,UK,DE,FR,ES,IT,CN,JP,KR,TR,AE,BR), momentum (-1..1), saturation (0-100), tnSellers (estimated competing Tunisian pages), why (1 sentence), hooks (2 short ad hooks).`,out,{json:true});
+  const r=await ask(`You are an e-commerce product researcher. Suggest 6 physical products in the niche "${q}" (price: ${b}) that are currently trending or rising in ${mk} and that are likely to sell well in Tunisia through cash-on-delivery social ads. Exclude products restricted from import into Tunisia (drones, radio transmitters, weapons, medicines, e-cigarettes). Return ONLY a JSON array of objects with keys: name, cat, icon (one emoji), cost (est. USD supplier unit cost), ship (est. USD shipping per unit), kg, tnd (suggested Tunisian price), seasons (array of months 1-12, or [] if evergreen), origin (one of US,UK,DE,FR,ES,IT,CN,JP,KR,TR,AE,BR), momentum (-1..1), saturation (0-100), tnSellers (estimated competing Tunisian pages), why (1 sentence), hooks (2 short ad hooks), seen_on (array of platforms or markets where it is popular, e.g. TikTok US, Amazon DE, Douyin).`,out,{json:true});
   if(Array.isArray(r)){STU.items=r;STU.status=`${r.length} AI-suggested candidates. These are model estimates, so check them before buying stock.`}else if(r)STU.status='Unexpected response. Try again.';else STU.status=out.textContent;
   if(location.hash==='#studio')route();return}
- if(t.dataset.addsc!=null){const x=STU.items[+t.dataset.addsc];const sat=x.saturation??40;const p=normalize({...x,source:'ai',ads:Math.round(sat*5),adDays:Math.round(10+sat/3),stores:Math.round(sat*3),seasons:x.seasons?.length?x.seasons:0});addImported([p]);x._added=1;toast('Added and judged: '+M(p).J.v);route();return}
+ if(t.dataset.addsc!=null){const x=STU.items[+t.dataset.addsc];const sat=x.saturation??40;const p=normalize({...x,sources:[{type:'ai',title:'Suggested by AI Scout'+(STU.q?' for "'+STU.q+'"':''),note:(x.seen_on||[]).length?'AI says it is popular on '+x.seen_on.join(', ')+' (not verified)':'Not verified',date:today()}],source:'ai',ads:Math.round(sat*5),adDays:Math.round(10+sat/3),stores:Math.round(sat*3),seasons:x.seasons?.length?x.seasons:0});addImported([p]);x._added=1;toast('Added and judged: '+M(p).J.v);route();return}
  if(t.id==='cgo'||t.id==='cclr'){if(t.id==='cclr'){STU.chat=[];route();return}const q=document.getElementById('cq').value.trim();if(!q)return;STU.chat.push({role:'user',content:q});route();
   const box=document.getElementById('chat');const el=document.createElement('div');el.className='msg a';el.textContent='Thinking…';box.appendChild(el);box.scrollTop=1e9;
   const sys=`You are PeeK's AI analyst helping a Tunisian e-commerce seller (COD, prices in TND) pick winning products. Use the tools to look up the dataset before answering. Be concise and concrete. Note that the dataset may contain demo or estimated values.\n\nUser: `;
@@ -478,11 +526,11 @@ document.addEventListener('drop',e=>{const c=e.target.closest?.('[data-col]');if
 function normalize(x){const legacy={US:x.trend?.us,UK:x.trend?.us,DE:x.trend?.eu,FR:x.trend?.eu,ES:x.trend?.eu,IT:x.trend?.eu,CN:x.trend?.cn};
  const origin=MC[x.origin]?x.origin:'US',mom=x.momentum??x.usG??.4,gen=genTrend(origin,mom<-.1?'d':mom>.6?'r':mom>.2?'r':'e',mom>.6?9:6,Math.floor(Math.random()*1e4)),trend={};
  MK.forEach(([c])=>{const a=x.trend?.[c]||legacy[c];trend[c]=Array.isArray(a)&&a.length>=8?a.map(Number):gen[c]});
- return mk({id:x.id||'i'+Math.random().toString(36).slice(2,9),name:x.name||'Unnamed',cat:x.cat||'Other',icon:x.icon||'📦',cost:+x.cost||5,ship:+x.ship||3,kg:+x.kg||.5,tnd:+x.tnd||79,ads:+(x.ads??0),adDays:+(x.adDays??0),stores:+(x.stores??50),tnSellers:+(x.tnSellers??0),fragile:!!x.fragile,restricted:!!x.restricted,seasons:Array.isArray(x.seasons)&&x.seasons.length&&x.seasons.length<12?x.seasons:0,origin,trend,hooks:x.hooks||[],source:x.source||'import'})}
+ return mk({id:x.id||'i'+Math.random().toString(36).slice(2,9),name:x.name||'Unnamed',cat:x.cat||'Other',icon:x.icon||'📦',cost:+x.cost||5,ship:+x.ship||3,kg:+x.kg||.5,tnd:+x.tnd||79,ads:+(x.ads??0),adDays:+(x.adDays??0),stores:+(x.stores??50),tnSellers:+(x.tnSellers??0),fragile:!!x.fragile,restricted:!!x.restricted,seasons:Array.isArray(x.seasons)&&x.seasons.length&&x.seasons.length<12?x.seasons:0,origin,trend,hooks:x.hooks||[],source:x.source||'import',query:x.query||'',image:x.image||'',sources:x.sources||[],adSamples:x.adSamples||x.ad_samples||[],firstSeen:x.firstSeen||x.first_seen||today(),lastSeen:x.lastSeen||x.last_seen||'',runs:+(x.runs||0)})}
 function addImported(arr){DB=DB.concat(arr);try{const cur=JSON.parse(localStorage.getItem('pk_import')||'[]');localStorage.setItem('pk_import',JSON.stringify(cur.concat(arr.map(({_m,suppliers,...p})=>p))))}catch(e){}}
 route();
 fetch('products.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(a=>{const arr=(Array.isArray(a)?a:a?.products||[]);if(!arr.length)return;
- DB=DB.filter(p=>p.source!=='demo').concat(arr.map(x=>normalize({source:'collector',...x})));LIVE=arr.length;resetM();route();toast(arr.length+' live products loaded')}).catch(()=>{});
+ DB=DB.filter(p=>p.source!=='demo').concat(arr.map(x=>normalize({source:'collector',...x})));LIVE=arr.length;UPD=(a&&!Array.isArray(a)&&a.updated)||'';resetM();route();toast(arr.length+' live products loaded')}).catch(()=>{});
 </script>
 </body>
 </html>
